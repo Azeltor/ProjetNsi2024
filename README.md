@@ -1,6 +1,6 @@
 # ProjetNsi2024
 à faire
-
+![hippo](https://media3.giphy.com/media/aUovxH8Vf9qDu/giphy.gif)
 Inspi pour github : https://github.com/ProjetIsn2019/Rapports/blob/master/README.md
 Menu = https://youtu.be/GMBqjxcKogA
 ![F4PpzSdWsAA29NJ](https://github.com/Azeltor/ProjetNsi2024/assets/160437266/7739f4f2-1969-4d37-8b83-7fd38d089274)
