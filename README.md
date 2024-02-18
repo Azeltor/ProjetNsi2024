@@ -17,6 +17,8 @@ Menu = https://youtu.be/GMBqjxcKogA
 ![image](https://github.com/Azeltor/ProjetNsi2024/assets/151580496/83820c4f-83d4-441c-933b-4c474607df7d)
 ![DSZ7dvoXUAM48QA](https://github.com/Azeltor/ProjetNsi2024/assets/160437266/2a4a1d7b-e3d7-4679-9f4d-0112b24e0308)
 ![full](https://github.com/Azeltor/ProjetNsi2024/assets/160437266/2a1e12c5-7983-453e-9307-ed599c168c22)
+![image](https://github.com/Azeltor/ProjetNsi2024/assets/151580496/665302a5-e094-48ac-b6d8-8adb8085d069)
+
 
 
 
