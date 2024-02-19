@@ -104,10 +104,18 @@ while running:
     if Icone.rect.collidepoint(pygame.mouse.get_pos()) and event.type == pygame.MOUSEBUTTONUP:  # Si un clic de souris est détecté
       if event.button == 1:
         pygame.display.toggle_fullscreen()
-    if Musique[0].est_dans() and Musique[0].clique(screen):
-      pygame.mixer.music.unpause()
-    if Musique[1].est_dans() and Musique[1].clique(screen):
-      pygame.mixer.music.pause()
+    if pygame.mixer.music.get_busy():#Si il y a de la musique
+       Musique[1].image.set_alpha(255)#Je remet l'opacité au maximum du bouton enlever la musique
+       Musique[0].image.set_alpha(0)#Je rend invisible l'option mettre musique
+       if Musique[1].est_dans() and Musique[1].clique(screen): #si je clique et que je suis dans la zone du bouton 
+        pygame.mixer.music.pause()# Musique en pause
+        Musique[1].image.set_alpha(0)#Je rend invisible le bouton désactiver la musique vu que je viens de la mettre en pause
+    if not pygame.mixer.music.get_busy():#Si il n'y a pas de musique
+       Musique[0].image.set_alpha(255)  #je remet le bouton activer la musique
+       Musique[1].image.set_alpha(0) #Je cache le bouton enlever la musique
+       if Musique[0].est_dans() and Musique[0].clique(screen): #si je clique et que je suis dans la zone du bouton 
+         pygame.mixer.music.unpause() #je met la musique en pause
+         Musique[0].image.set_alpha(0) #Je cache le bouton activer la musique
 
   pygame.display.update()
 
