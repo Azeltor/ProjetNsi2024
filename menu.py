@@ -23,7 +23,8 @@ OptionsNoir = pygame.image.load('Graphisme\Boutons\Bouton_Options_Noir-removebg-
 PlayNoir = pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Noir-removebg-preview.png')
 PlayOrange = pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Orange-removebg-preview.png')
 Iconeimg = pygame.image.load('Graphisme\Boutons\icone.png')
-
+Musique1 = pygame.image.load('Graphisme\Boutons\Anote_Musique_On.png')
+Musique2 = pygame.image.load('Graphisme\Boutons\Anote_Musique_Off.png')
 #Time fps
 fps = 60
 timer = pygame.time.Clock()
@@ -36,10 +37,13 @@ PlayN = Button(screen_width / 2, screen_height / 2-300, PlayNoir,1)  #Bouton pou
 QuitterO = Button(screen_width / 2, screen_height / 2 - 25, QuitterOrange, 1)
 OptionO = Button(screen_width / 2, screen_height / 2-175, OptionOrange, 1)
 PlayO = Button(screen_width / 2, screen_height / 2-325, PlayOrange, 1)
+MusiqueOn = Button(screen_width + 100, screen_height + 100, Musique1, 1)
+MusiqueOff = Button(screen_width + 100, screen_height + 100, Musique2, 1)
 
 Quitter = (QuitterN,QuitterO)
 Jouer = (PlayN,PlayO)
 Option = (OptionN,OptionO)
+Musique = (MusiqueOn, MusiqueOff)
 #Action en cas de clic
 
 
@@ -58,6 +62,7 @@ while running:
   Icone.draw(screen)
   Option[1].draw(screen)
   Quitter[1].draw(screen)
+  Musique[0].draw(screen)
 
 
   for event in pygame.event.get():  # Récupère les actions du joueur
