@@ -1,6 +1,6 @@
 import csv
 import os
-import valeurs
+from Fonctions.valeurs import valeurs
 import pygame
 
 pygame.init()
