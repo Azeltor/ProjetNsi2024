@@ -1,14 +1,8 @@
 '''Fichier Pour La Conception Du Menu'''
 import pygame, os
-SonMenu = 'Son\somambiant.mp3'
 pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.load(SonMenu)
-pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.04)
-from classes.Bouton import Button
-import time
-
+from Fonctions import bibliotheque
+from classes import Bouton
 
 '''Création Fenêtre Pour menu'''
 pygame.init()
@@ -28,9 +22,6 @@ OptionsNoir = pygame.image.load('Graphisme\Boutons\Bouton_Options_Noir-removebg-
 PlayNoir = pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Noir-removebg-preview.png')
 PlayOrange = pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Orange-removebg-preview.png')
 Iconeimg = pygame.image.load('Graphisme\Boutons\icone.png')
-Musique1 = pygame.image.load('Graphisme\Boutons\Anote_Musique_On.png')
-Musique2 = pygame.image.load('Graphisme\Boutons\Anote_Musique_Off.png')
-
 
 #Time fps
 fps = 60
@@ -44,13 +35,10 @@ PlayN = Button(screen_width / 2, screen_height / 2-300, PlayNoir,1)  #Bouton pou
 QuitterO = Button(screen_width / 2, screen_height / 2 - 25, QuitterOrange, 1)
 OptionO = Button(screen_width / 2, screen_height / 2-175, OptionOrange, 1)
 PlayO = Button(screen_width / 2, screen_height / 2-325, PlayOrange, 1)
-MusiqueOn = Button(screen_width - screen_width + 210, screen_height /100 , Musique1, 0.15)
-MusiqueOff = Button(screen_width - screen_width + 350, screen_height / 100, Musique2, 0.15)
 
 Quitter = (QuitterN,QuitterO)
 Jouer = (PlayN,PlayO)
 Option = (OptionN,OptionO)
-Musique = (MusiqueOn, MusiqueOff)
 #Action en cas de clic
 
 
@@ -69,8 +57,6 @@ while running:
   Icone.draw(screen)
   Option[1].draw(screen)
   Quitter[1].draw(screen)
-  Musique[0].draw(screen)
-  Musique[1].draw(screen)
 
 
   for event in pygame.event.get():  # Récupère les actions du joueur
@@ -104,26 +90,12 @@ while running:
     if Icone.rect.collidepoint(pygame.mouse.get_pos()) and event.type == pygame.MOUSEBUTTONUP:  # Si un clic de souris est détecté
       if event.button == 1:
         pygame.display.toggle_fullscreen()
-    if Musique[0].est_dans() and Musique[0].clique(screen):
-      pygame.mixer.music.unpause()
-    if Musique[1].est_dans() and Musique[1].clique(screen):
-      pygame.mixer.music.pause()
+
 
   pygame.display.update()
 
 pygame.quit()  # Ferme la fenêtre
 
-"""
-    if Musique[0].est_dans() and Musique[0].clique(screen):
-      Musique[0].rect.topleft = (-2000, Musique[0].coordonnee[1])
-      Musique[1].rect.topleft = (Musique[0].coordonnee[0] -168,Musique[0].coordonnee[1])
-      print(Musique[1].clique(screen))
-      pygame.mixer.music.pause()
-    if Musique[1].est_dans() and Musique[1].clique(screen):
-      print("test2")
-      Musique[1].rect.topleft = (Musique[1].coordonnee[0], Musique[1].coordonnee[1])
-      Musique[0].rect.topleft = (Musique[0].coordonnee[0] - 1000, Musique[0].coordonnee[1])
-      pygame.mixer.music.unpause()
-"""
+
 
 
