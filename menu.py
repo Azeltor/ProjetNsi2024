@@ -1,8 +1,9 @@
 '''Fichier Pour La Conception Du Menu'''
 import pygame, os
+
 pygame.init()
 
-from classes import Bouton
+from classes.Bouton import Button
 
 '''Création Fenêtre Pour menu'''
 pygame.init()
