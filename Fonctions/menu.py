@@ -1,10 +1,10 @@
 '''Fichier Pour La Conception Du Menu'''
-import sys
-sys.path.append('classes')
+import pygame, os
+pygame.init()
+
+from classes import Bouton
 
 '''Création Fenêtre Pour menu'''
-from Bouton import Button
-import pygame, os
 pygame.init()
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 info = pygame.display.Info()
@@ -28,13 +28,17 @@ fps = 60
 timer = pygame.time.Clock()
 
 # Créer des instances de bouton
-Quitter = Button(screen_width / 2, screen_height / 2, QuitterNoir, 1)  #Bouton quitter
-Option = Button(screen_width / 2, screen_height / 2 - 150, OptionsNoir,1)  #Bouton Option
+QuitterN = Button(screen_width / 2, screen_height / 2, QuitterNoir, 1)  #Bouton quitter
+OptionN = Button(screen_width / 2, screen_height / 2 - 150, OptionsNoir,1)  #Bouton Option
 Icone = Button(screen_width - 100, screen_height / 100, Iconeimg,1)  #Bouton pour mettre en fullscreen
-Play = Button(screen_width / 2, screen_height / 2-300, PlayNoir,1)  #Bouton pour jouer
-QuitterO = Button(screen_width / 2, screen_height / 2, QuitterOrange, 1)
-OptionO = Button(screen_width / 2, screen_height / 2-150, OptionOrange, 1)
-playO = Button(screen_width / 2, screen_height / 2-300, PlayOrange, 1)
+PlayN = Button(screen_width / 2, screen_height / 2-300, PlayNoir,1)  #Bouton pour jouer
+QuitterO = Button(screen_width / 2, screen_height / 2 - 25, QuitterOrange, 1)
+OptionO = Button(screen_width / 2, screen_height / 2-175, OptionOrange, 1)
+PlayO = Button(screen_width / 2, screen_height / 2-325, PlayOrange, 1)
+
+Quitter = (QuitterN,QuitterO)
+Jouer = (PlayN,PlayO)
+Option = (OptionN,OptionO)
 #Action en cas de clic
 
 
@@ -44,22 +48,54 @@ while running:
   # Arrière Plan
   timer.tick(fps)
   screen.blit(Imagefond, (0, 0))
+  # Dessiner les boutons
+  Jouer[0].draw(screen)
+  Icone.draw(screen)
+  Option[0].draw(screen)
+  Quitter[0].draw(screen)
+  Jouer[1].draw(screen)
+  Icone.draw(screen)
+  Option[1].draw(screen)
+  Quitter[1].draw(screen)
+
 
   for event in pygame.event.get():  # Récupère les actions du joueur
     if event.type == pygame.QUIT:  # Si le joueur veut quitter la fenêtre
       running = False
       print('Le jeu se ferme')
-    if Quitter.draw(screen):
-       pygame.quit()
+    if Jouer[0].est_dans(): #Si le curseur est dans le bouton noir
+      Jouer[0].rect.topleft = (-500,Jouer[0].coordonnee[1]) #Met le bouton Noir en dehors de la résolution
+      Jouer[1].rect.topleft = (Jouer[1].coordonnee[0] - Jouer[1].width/2,Jouer[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
+    if Jouer[1].clique(screen): #Si on clique gauche dans la zone du bouton
+      pygame.quit()
+    if Jouer[0].est_dans() == False and Jouer[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
+      Jouer[0].rect.topleft = (Jouer[0].coordonnee[0] - Jouer[0].width/2,Jouer[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
+      Jouer[1].rect.topleft = (-800 ,Jouer[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
+    if Option[0].est_dans(): #Si le curseur est dans le bouton noir
+      Option[0].rect.topleft = (-500,Option[0].coordonnee[1]) #Met le bouton Noir en dehors de la résolution
+      Option[1].rect.topleft = (Option[1].coordonnee[0] - Option[1].width/2,Option[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
+    if Option[1].clique(screen): #Si on clique gauche dans la zone du bouton
+      pygame.quit()
+    if Option[0].est_dans() == False and Option[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
+      Option[0].rect.topleft = (Option[0].coordonnee[0] - Option[0].width/2,Option[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
+      Option[1].rect.topleft = (-800 ,Option[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
+    if Quitter[0].est_dans(): #Si le curseur est dans le bouton noir
+      Quitter[0].rect.topleft = (-500,Quitter[0].coordonnee[1]) #Met le bouton Noir en dehors de la résolution
+      Quitter[1].rect.topleft = (Quitter[1].coordonnee[0] - Quitter[1].width/2,Quitter[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
+    if Quitter[1].clique(screen): #Si on clique gauche dans la zone du bouton
+      pygame.quit() #Quitte la fenêtre
+    if Quitter[0].est_dans() == False and Quitter[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
+      Quitter[0].rect.topleft = (Quitter[0].coordonnee[0] - Quitter[0].width/2,Quitter[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
+      Quitter[1].rect.topleft = (-800 ,Quitter[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
     if Icone.rect.collidepoint(pygame.mouse.get_pos()) and event.type == pygame.MOUSEBUTTONUP:  # Si un clic de souris est détecté
       if event.button == 1:
         pygame.display.toggle_fullscreen()
-  # Dessiner les boutons
-  Play.draw(screen)
-  Icone.draw(screen)
-  Option.draw(screen)
-  Quitter.draw(screen)
+
 
   pygame.display.update()
 
 pygame.quit()  # Ferme la fenêtre
+
+
+
+
