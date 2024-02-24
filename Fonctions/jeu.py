@@ -2,23 +2,45 @@ import pygame, os
 from Constantes import constante_partie as cp
 from classes.Bouton import Button
 pygame.init()
+pygame.mixer.init()
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 info = pygame.display.Info()
 
 
+def jeux():
+    fenetre('Jeu','TitreJeu')
+    while True:
+        cp.timer.tick(cp.fps)
+        cp.NomEcranJeu.fill((25, 25, 25))
+        for event in pygame.event.get():  # Récupère les actions du joueur
+            if event.type == pygame.QUIT:  # Si le joueur veut quitter la fenêtre
+                return None
+            print('Le jeu se ferme')
 
 
 
-def fenetre():
-    pygame.display.set_caption('Test Jeu')
+def fenetre(menuoujeu, nom_fenetre):
+    pygame.display.set_caption(nom_fenetre)
     pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\Logo.png'))
-    cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
+    if menuoujeu == 'Menu':
+        cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
+    if menuoujeu =='Jeu':
+        cp.NomEcranJeu = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
 
+
+
+
+
+
+def musiquemenu():
+    pygame.mixer.music.load(cp.SonMenu)
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.04)
 
 def menu():
     QuitterN = Button(cp.screen_width / 2, cp.screen_height / 2, pygame.image.load('Graphisme\Boutons\Bouton_Quitter_Noir-removebg-preview.png'), 1)  #Bouton quitter
     OptionN = Button(cp.screen_width / 2, cp.screen_height / 2 - 150, pygame.image.load('Graphisme\Boutons\Bouton_Options_Noir-removebg-preview.png'),1)  #Bouton Option
-    Icone = Button(cp.screen_width - 100, cp.screen_height / 100, pygame.image.load('Graphisme\Boutons\Bouton_Options_Noir-removebg-preview.png'),1)  #Bouton pour mettre en fullscreen
+    Icone = Button(cp.screen_width - 100, cp.screen_height / 100, pygame.image.load('Graphisme\Boutons\icone.png'),1)  #Bouton pour mettre en fullscreen
     PlayN = Button(cp.screen_width / 2, cp.screen_height / 2-300, pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Noir-removebg-preview.png'),1)  #Bouton pour jouer
     QuitterO = Button(cp.screen_width / 2, cp.screen_height / 2 - 25, pygame.image.load('Graphisme\Boutons\Bouton_Quitter_Orange-removebg-preview.png'), 1)
     OptionO = Button(cp.screen_width / 2, cp.screen_height / 2-175, pygame.image.load('Graphisme\Boutons\Bouton_Options_Orange-removebg-preview.png'), 1)
@@ -56,6 +78,8 @@ def menu():
                 Jouer[1].rect.topleft = (Jouer[1].coordonnee[0] - Jouer[1].width/2,Jouer[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
             if Jouer[1].clique(cp.NomEcran): #Si on clique gauche dans la zone du bouton
                 pygame.quit()
+                jeux()
+                
             if Jouer[0].est_dans() == False and Jouer[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
                 Jouer[0].rect.topleft = (Jouer[0].coordonnee[0] - Jouer[0].width/2,Jouer[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
                 Jouer[1].rect.topleft = (-800 ,Jouer[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
@@ -74,7 +98,7 @@ def menu():
                 pygame.quit() #Quitte la fenêtre
             if Quitter[0].est_dans() == False and Quitter[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
                 Quitter[0].rect.topleft = (Quitter[0].coordonnee[0] - Quitter[0].width/2,Quitter[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
-            Quitter[1].rect.topleft = (-800 ,Quitter[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
+                Quitter[1].rect.topleft = (-800 ,Quitter[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
             if Icone.rect.collidepoint(pygame.mouse.get_pos()) and event.type == pygame.MOUSEBUTTONUP:  # Si un clic de souris est détecté
                 if event.button == 1:
                     pygame.display.toggle_fullscreen()
@@ -92,8 +116,7 @@ def menu():
 
 
         pygame.display.update()
-        pygame.quit()  # Ferme la fenêtre
-
+    pygame.quit()  # Ferme la fenêtre
 
 
 

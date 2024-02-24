@@ -1,29 +1,20 @@
 '''Fichier Pour La Conception Du Menu'''
 import pygame, os
 SonMenu = 'Son\somambiant.mp3'
-pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.load(SonMenu)
-pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.04)
 from classes.Bouton import Button
 from Constantes import constante_partie as cp
 from Fonctions import jeu
 
-import time
 
 
-'''Création Fenêtre Pour menu'''
+
+
 pygame.init()
-jeu.fenetre()
+jeu.fenetre('Menu', 'TitreMenu')
+jeu.musiquemenu()
 jeu.menu()
 
-# Créer des instances de bouton
 
-
-
-#Action en cas de clic
-tuiles = {}
 
 
 '''def charger_tileset():
@@ -45,6 +36,6 @@ tuiles = {}
 charger_tileset()'''
 
 
-# Boucle De jeu
+
 
 

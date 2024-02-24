@@ -14,4 +14,7 @@ fps = 60
 timer = pygame.time.Clock()
 
 NomEcran = None
+NomEcranJeu = None
 music_enabled = True
+
+SonMenu = 'Son\somambiant.mp3'
