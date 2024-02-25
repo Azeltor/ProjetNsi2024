@@ -61,6 +61,7 @@ class Game:
 
     def run(self):
         while True:
+            cp.timer.tick(cp.fps)
             self.group.update()
             self.group.center(self.player.rect)
             self.group.draw(cp.NomEcranJeu)

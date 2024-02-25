@@ -20,32 +20,32 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey([255, 255, 255])
 
     def move_right(self):
-        self.position[0] += 1
+        self.position[0] += 3* 0.8
     
     def move_left(self):
-        self.position[0] -= 1
+        self.position[0] -= 3* 0.8
     
     def move_up(self):
-        self.position[1] -= 1
+        self.position[1] -= 3* 0.8
     
     def move_down(self):
-        self.position[1] += 1
+        self.position[1] += 3* 0.8
     
     def move_upAndright(self):
-        self.position[0] += 0.705
-        self.position[1] -= 0.705
+        self.position[0] += 2.115* 0.8
+        self.position[1] -= 2.115* 0.8
     
     def move_upAndleft(self):
-        self.position[0] -= 0.705
-        self.position[1] -= 0.705
+        self.position[0] -=2.115* 0.8
+        self.position[1] -= 2.115* 0.8
     
     def move_downAndleft(self):
-        self.position[0] -= 0.705
-        self.position[1] += 0.705
+        self.position[0] -= 2.115* 0.8
+        self.position[1] += 2.115* 0.8
     
     def move_downAndright(self):
-        self.position[0] += 0.705
-        self.position[1] += 0.705
+        self.position[0] += 2.115
+        self.position[1] += 2.115
 
     def bougepas(self):
         self.position[0] -= 0
