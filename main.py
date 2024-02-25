@@ -8,7 +8,7 @@ from Fonctions import jeu
 
 '''Création Fenêtre Pour menu'''
 pygame.init()
-jeu.fenetre()
+jeu.fenetre('Menu', 'menu')
 jeu.menu()
 
 

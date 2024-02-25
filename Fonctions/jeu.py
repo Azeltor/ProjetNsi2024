@@ -2,11 +2,7 @@ import pygame, os, sys
 from pytmx.util_pygame import load_pygame
 from Constantes import constante_partie as cp
 from classes.Bouton import Button
-from Fonctions.bibliotheque import * 
-from Fonctions.valeurs import * 
-from classes.TilesMap import Tiles
 from classes.Joueur import Player
-from classes.Camera import CameraGroup
 from classes.Game import Game
 
 
@@ -24,6 +20,7 @@ def fenetre(menuoujeu, nom_fenetre):
     
 
 def musiquemenu():
+    pygame.mixer.init()
     pygame.mixer.music.load(cp.SonMenu)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.04)
@@ -42,6 +39,7 @@ def menu():
     Jouer = (PlayN,PlayO)
     Option = (OptionN,OptionO)
     Musique = (MusiqueOn, MusiqueOff)
+    musiquemenu()
     while True:
         # Arrière Plan
         cp.timer.tick(cp.fps)
@@ -69,7 +67,11 @@ def menu():
             if Jouer[1].clique(cp.NomEcran): #Si on clique gauche dans la zone du bouton
                 pygame.quit()
                 game1 = Game()
-                game1.run()
+                if cp.music_enabled == True:
+                    musiquemenu()
+                    game1.run()
+                else:
+                    game1.run()
                 
             if Jouer[0].est_dans() == False and Jouer[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
                 Jouer[0].rect.topleft = (Jouer[0].coordonnee[0] - Jouer[0].width/2,Jouer[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
