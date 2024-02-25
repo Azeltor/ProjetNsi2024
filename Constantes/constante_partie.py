@@ -18,3 +18,9 @@ NomEcranJeu = None
 music_enabled = True
 
 SonMenu = 'Son\somambiant.mp3'
+
+map1 = []
+map2 = []
+map3 = []
+
+x, y = 0, 0

@@ -1,6 +1,6 @@
 import csv
 import os
-from valeurs import tuiles
+from Fonctions.valeurs import tuiles
 import pygame as pg
 
 pg.init()
@@ -22,6 +22,4 @@ def charger_tileset():
           tuiles[str(id)] = img.subsurface(rectangle)
           id += 1  # J'incrémente les IDs
 
-charger_tileset()
-print(tuiles)
 
