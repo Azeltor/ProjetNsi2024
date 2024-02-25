@@ -1,10 +1,13 @@
-import pygame, os
+import pygame, os, sys
 from pytmx.util_pygame import load_pygame
 from Constantes import constante_partie as cp
 from classes.Bouton import Button
 from Fonctions.bibliotheque import * 
 from Fonctions.valeurs import * 
 from classes.TilesMap import Tiles
+from classes.Joueur import Player
+from classes.Camera import CameraGroup
+from classes.Game import Game
 
 
 pygame.init()
@@ -13,35 +16,12 @@ os.environ['SDL_VIDEO_CENTERED'] = '1'
 info = pygame.display.Info()
 
 
-def jeux(nommap):
-    fenetre('Jeu','TitreJeu')
-    tmx_data = load_pygame('maps/map_test.tmx')
-    sprite_group = pygame.sprite.Group()
-    for layer in tmx_data.layers:
-        if hasattr(layer, 'data'):
-            for x, y, surf in layer.tiles():
-                pos = (x * 32, y * 32)
-                Tiles(pos = pos, surf = surf, groups = sprite_group)
-    while True:
-        for event in pygame.event.get():  # Récupère les actions du joueur
-            if event.type == pygame.QUIT:  # Si le joueur veut quitter la fenêtre
-                return None
-        sprite_group.draw(cp.NomEcranJeu)
-        pygame.display.update()
-
 def fenetre(menuoujeu, nom_fenetre):
     pygame.display.set_caption(nom_fenetre)
     pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\Logo.png'))
     if menuoujeu == 'Menu':
         cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
-    if menuoujeu =='Jeu':
-        cp.NomEcranJeu = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
     
-
-
-
-
-
 
 def musiquemenu():
     pygame.mixer.music.load(cp.SonMenu)
@@ -81,14 +61,15 @@ def menu():
             Musique[1].draw(cp.NomEcran)
         for event in pygame.event.get():  # Récupère les actions du joueur
             if event.type == pygame.QUIT:  # Si le joueur veut quitter la fenêtre
-                return None
-            print('Le jeu se ferme')
+                pygame.quit()
+                sys.exit()
             if Jouer[0].est_dans(): #Si le curseur est dans le bouton noir
                 Jouer[0].rect.topleft = (-500,Jouer[0].coordonnee[1]) #Met le bouton Noir en dehors de la résolution
                 Jouer[1].rect.topleft = (Jouer[1].coordonnee[0] - Jouer[1].width/2,Jouer[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
             if Jouer[1].clique(cp.NomEcran): #Si on clique gauche dans la zone du bouton
                 pygame.quit()
-                jeux('map_test')
+                game1 = Game()
+                game1.run()
                 
             if Jouer[0].est_dans() == False and Jouer[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
                 Jouer[0].rect.topleft = (Jouer[0].coordonnee[0] - Jouer[0].width/2,Jouer[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
@@ -106,6 +87,7 @@ def menu():
                 Quitter[1].rect.topleft = (Quitter[1].coordonnee[0] - Quitter[1].width/2,Quitter[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
             if Quitter[1].clique(cp.NomEcran): #Si on clique gauche dans la zone du bouton
                 pygame.quit() #Quitte la fenêtre
+                sys.exit()
             if Quitter[0].est_dans() == False and Quitter[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
                 Quitter[0].rect.topleft = (Quitter[0].coordonnee[0] - Quitter[0].width/2,Quitter[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
                 Quitter[1].rect.topleft = (-800 ,Quitter[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
@@ -126,7 +108,7 @@ def menu():
 
 
         pygame.display.update()
-pygame.quit()  # Ferme la fenêtre
+
 
 
 
