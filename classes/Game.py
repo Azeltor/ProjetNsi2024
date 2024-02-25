@@ -61,7 +61,6 @@ class Game:
 
     def run(self):
         while True:
-            cp.timer.tick(cp.fps)
             self.group.update()
             self.group.center(self.player.rect)
             self.group.draw(cp.NomEcranJeu)
@@ -70,4 +69,5 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
+            cp.timer.tick(60)
 

@@ -36,7 +36,7 @@ class Player(pygame.sprite.Sprite):
         self.position[1] -= 2.115* 0.8
     
     def move_upAndleft(self):
-        self.position[0] -=2.115* 0.8
+        self.position[0] -=2.115 * 0.8
         self.position[1] -= 2.115* 0.8
     
     def move_downAndleft(self):
@@ -44,8 +44,8 @@ class Player(pygame.sprite.Sprite):
         self.position[1] += 2.115* 0.8
     
     def move_downAndright(self):
-        self.position[0] += 2.115
-        self.position[1] += 2.115
+        self.position[0] += 2.115* 0.8
+        self.position[1] += 2.115* 0.8
 
     def bougepas(self):
         self.position[0] -= 0
