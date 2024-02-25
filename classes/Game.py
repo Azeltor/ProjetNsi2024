@@ -20,7 +20,11 @@ class Game:
     def handle_input(self):
         pressed = pygame.key.get_pressed()  
         if pressed[pygame.K_z] and pressed[pygame.K_d] and pressed[pygame.K_q]:
-            self.player.bougepas()
+            self.player.move_up()
+            self.player.change_anim('up')
+        elif pressed[pygame.K_d] and pressed[pygame.K_q] and pressed[pygame.K_s]:
+            self.player.move_down()
+            self.player.change_anim('down')
         elif pressed[pygame.K_z] and pressed[pygame.K_d]:
             self.player.move_upAndright()
             self.player.change_anim('right')
@@ -37,6 +41,7 @@ class Game:
             self.player.bougepas()
         elif pressed[pygame.K_d] and pressed[pygame.K_q]:
             self.player.bougepas()
+        
         elif pressed[pygame.K_z]:
             self.player.move_up()
             self.player.change_anim('up')
