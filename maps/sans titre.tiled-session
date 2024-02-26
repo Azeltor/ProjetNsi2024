@@ -14,18 +14,18 @@
             }
         },
         "map_test.tmx": {
-            "scale": 0.33,
+            "scale": 0.125,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1507.5757575757575,
-                "y": 1554.5454545454545
+                "x": 4204,
+                "y": 3144
             }
         },
         "tileset_nsi.tsx": {
             "scaleInDock": 1
         },
         "tileset_nsi2.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 0.25
         }
     },
