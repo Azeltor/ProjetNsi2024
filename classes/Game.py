@@ -12,10 +12,16 @@ class Game:
         tmx_data = pytmx.util_pygame.load_pygame('maps/map_test.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
-        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
         map_layer.zoom = 2
-        self.player = Player(77 * 32, 87* 32)
+        self.player = Player(50 * 32, 80* 32)
+        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
         self.group.add(self.player)
+        self.walls = []
+        for obj in tmx_data.objects:
+            if obj.type == "collision":
+                self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+
+
 
     def handle_input(self):
         pressed = pygame.key.get_pressed()  
@@ -56,18 +62,28 @@ class Game:
             self.player.change_anim('left')
         
 
-        
+    def update(self):
+        self.group.update() 
+        for sprite in self.group.sprites():
+            
+            if sprite.feet.collidelist(self.walls) >  -1:
+                print('ok')
+                sprite.move_back()
+
 
 
     def run(self):
         while True:
-            self.group.update()
-            self.group.center(self.player.rect)
+
+            self.player.save_location()
+            self.handle_input()
+            self.update()
+            self.group.center(self.player.rect.center)
             self.group.draw(cp.NomEcranJeu)
             pygame.display.flip()
-            self.handle_input()
+            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
-            cp.timer.tick(60)
-
+            cp.timer.tick(cp.fps)
+    pygame.quit()
