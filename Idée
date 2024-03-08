@@ -1,0 +1,32 @@
+Inspiration : https://github.com/ProjetIsn2019/Rapports/blob/master/README.md
+Menu = https://youtu.be/GMBqjxcKogA
+
+
+
+IMPORTANT : FAIRE UN SYSTEME DE SAUVEGARDE
+
+
+Jeu en 2D en 32x32 pixel
+Ligne
+- Système de drop --> (randint)
+- Système d'inventaire:--> (dico/liste)
+- Système de combat :
+  - combat au tour par tour
+  - Système de level
+  - Système de compétence (arbre)
+  - Système de loot (tu tue des mobs pour loot)
+  - Système de quête
+  - Système de minage de ressource (mine du charbon)
+  - Système de création de potion etc 
+- Magasin d'armure :
+  -SS (shams) (Il a promis 50€)
+- Monde fermé mais pas trop (Type pokémon)
+  
+-Déroulement histoire:
+  - On Spawn chez la mama (professeur Shams qui sonne à la maison)
+  - 
+
+Idée - Quête(En mode world of warcraft) :
+  - Zone de tuto --> ça présente le jeu(combat,inventaire,arbre.. etc...)
+  
+  
