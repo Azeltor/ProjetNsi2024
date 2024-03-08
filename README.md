@@ -1,4 +1,4 @@
-# ProjetNsi2024 : Un monde ouvert creer sur Pygame 
+# ProjetNsi2024 : Un monde fermé creer sur Pygame 
 -Nombre de lignes de codes totales : 
 
 -Capture d'écran : 
