@@ -1,30 +1,30 @@
 import pygame, sys
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y): #Définit les coordonnées d'apparition du joueur 
         super().__init__()
-        self.sprite_sheet = pygame.image.load('Graphisme\Character\Prototype_Worksheet.png')
-        self.image = self.get_image(0, 0)
+        self.sprite_sheet = pygame.image.load('Graphisme\Character\Prototype_Worksheet.png') #Charge la spritesheet avec les personnages
+        self.image = self.get_image(0, 0) #Personnage en Idle
         self.image.set_colorkey([255, 255, 255])
         self.rect = self.image.get_rect()
-        self.position = [x, y]
+        self.position = [x, y] #Position du joueur
         self.images = {
             'down' : self.get_image(0,96),
             'left' : self.get_image(0, 96),
             'right': self.get_image(0, 32),
             'up' : self.get_image(0,64)
-        }
-        self.feet = pygame.Rect(0, 0, self.rect.width * 0.5, 8)
-        self.old_position = self.position.copy()
+        } #Différentes images pour les actions différentes du joueur
+        self.feet = pygame.Rect(0, 0, self.rect.width * 0.5, 8) #Créer un rectangle aux pieds du joueur
+        self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker (Initialisation)
 
     def save_location(self): 
-        self.old_position = self.position.copy()
+        self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker
 
-    def change_anim(self, name): 
-        self.image = self.images[name]
+    def change_anim(self, name): #Méthode qui s'occupe des animations du personnage
+        self.image = self.images[name] 
         self.image.set_colorkey([255, 255, 255])
 
-    def move_right(self):
+    def move_right(self): 
         self.position[0] += 3* 0.8
     
     def move_left(self):
@@ -61,7 +61,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = self.position
         self.feet.midbottom = self.rect.midbottom
 
-    def move_back(self):
+    def move_back(self): #Peermet de revenir à la position d'avant (utile pour les collisions)
         self.position = self.old_position
         self.rect.topleft =self.position
         self.feet.midbottom = self.rect.midbottom
