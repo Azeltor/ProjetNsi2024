@@ -14,27 +14,27 @@ info = pygame.display.Info()
 
 def fenetre(menuoujeu, nom_fenetre):
     pygame.display.set_caption(nom_fenetre)
-    pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\Logo.png'))
+    pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\Logo.png')) #Chargement du logo
     if menuoujeu == 'Menu':
-        cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
+        cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE) #Chargement du menu (il s'adapte à l'écran du joueur)
     
 
 def musiquemenu():
-    pygame.mixer.init()
-    pygame.mixer.music.load(cp.SonMenu)
+    pygame.mixer.init() 
+    pygame.mixer.music.load(cp.SonMenu) #Lancement de la musique du jeu
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.04)
+    pygame.mixer.music.set_volume(0.04) #Initialisation du volume de la musique par défaut
 
 def menu():
-    QuitterN = Button(cp.screen_width / 2, cp.screen_height / 2, pygame.image.load('Graphisme\Boutons\Bouton_Quitter_Noir-removebg-preview.png'), 1)  #Bouton quitter
+    QuitterN = Button(cp.screen_width / 2, cp.screen_height / 2, pygame.image.load('Graphisme\Boutons\Bouton_Quitter_Noir-removebg-preview.png'), 1)  #Bouton Quitter
     OptionN = Button(cp.screen_width / 2, cp.screen_height / 2 - 150, pygame.image.load('Graphisme\Boutons\Bouton_Options_Noir-removebg-preview.png'),1)  #Bouton Option
     Icone = Button(cp.screen_width - 100, cp.screen_height / 100, pygame.image.load('Graphisme\Boutons\icone.png'),1)  #Bouton pour mettre en fullscreen
-    PlayN = Button(cp.screen_width / 2, cp.screen_height / 2-300, pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Noir-removebg-preview.png'),1)  #Bouton pour jouer
-    QuitterO = Button(cp.screen_width / 2, cp.screen_height / 2 - 25, pygame.image.load('Graphisme\Boutons\Bouton_Quitter_Orange-removebg-preview.png'), 1)
-    OptionO = Button(cp.screen_width / 2, cp.screen_height / 2-175, pygame.image.load('Graphisme\Boutons\Bouton_Options_Orange-removebg-preview.png'), 1)
-    PlayO = Button(cp.screen_width / 2, cp.screen_height / 2-325, pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Orange-removebg-preview.png'), 1)
-    MusiqueOn = Button(cp.screen_width - cp.screen_width + 210, cp.screen_height /100 , pygame.image.load('Graphisme\Boutons\Anote_Musique_On.png'), 0.15)
-    MusiqueOff = Button(cp.screen_width - cp.screen_width + 350, cp.screen_height / 100, pygame.image.load('Graphisme\Boutons\Anote_Musique_Off.png'), 0.15)
+    PlayN = Button(cp.screen_width / 2, cp.screen_height / 2-300, pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Noir-removebg-preview.png'),1)  #Bouton pour Jouer
+    QuitterO = Button(cp.screen_width / 2, cp.screen_height / 2 - 25, pygame.image.load('Graphisme\Boutons\Bouton_Quitter_Orange-removebg-preview.png'), 1) #Boutton Quitter Orange
+    OptionO = Button(cp.screen_width / 2, cp.screen_height / 2-175, pygame.image.load('Graphisme\Boutons\Bouton_Options_Orange-removebg-preview.png'), 1) #Bouton Options Orange
+    PlayO = Button(cp.screen_width / 2, cp.screen_height / 2-325, pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Orange-removebg-preview.png'), 1) #Bouton Jouer Orange
+    MusiqueOn = Button(cp.screen_width - cp.screen_width + 210, cp.screen_height /100 , pygame.image.load('Graphisme\Boutons\Anote_Musique_On.png'), 0.15) #Bouton Musique On
+    MusiqueOff = Button(cp.screen_width - cp.screen_width + 350, cp.screen_height / 100, pygame.image.load('Graphisme\Boutons\Anote_Musique_Off.png'), 0.15) #Bouton Musique Off
     Quitter = (QuitterN,QuitterO)
     Jouer = (PlayN,PlayO)
     Option = (OptionN,OptionO)
@@ -43,7 +43,7 @@ def menu():
     while True:
         # Arrière Plan
         cp.timer.tick(cp.fps)
-        cp.NomEcran.blit(pygame.image.load('Graphisme\Background\Bg.jpg'), (0, 0))
+        cp.NomEcran.blit(pygame.image.load('Graphisme\Background\Bg.jpg'), (0, 0)) #Chargement de l'arrière plan
         # Dessiner les boutons
         Jouer[0].draw(cp.NomEcran)
         Icone.draw(cp.NomEcran)
@@ -98,14 +98,14 @@ def menu():
                     pygame.display.toggle_fullscreen()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if Musique[0].est_dans() and Musique[0].clique(cp.NomEcran):
-                    pygame.mixer.music.pause()
+                    pygame.mixer.music.pause() # Si le bouton musique "On" a été cliqué, le menu se réactualise en mettant le bouton musique "Off" et la musique est coupé
                     cp.music_enabled = False
-                    Musique[0].rect.topleft = (-2000, Musique[0].coordonnee[1])
+                    Musique[0].rect.topleft = (-2000, Musique[0].coordonnee[1]) #Localisation du  bouton musique
                     Musique[1].rect.topleft = (Musique[1].coordonnee[0] - Musique[1].width / 2-67, Musique[1].coordonnee[1])
                 elif Musique[1].est_dans() and Musique[1].clique(cp.NomEcran):
                     pygame.mixer.music.unpause()
                     cp.music_enabled = True
-                    Musique[1].rect.topleft = (-2000, Musique[1].coordonnee[1])
+                    Musique[1].rect.topleft = (-2000, Musique[1].coordonnee[1]) #Localisation du  bouton musique
                     Musique[0].rect.topleft = (Musique[0].coordonnee[0] - Musique[0].width / 2, Musique[0].coordonnee[1])
 
 
