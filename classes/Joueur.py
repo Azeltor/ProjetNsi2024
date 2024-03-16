@@ -17,42 +17,42 @@ class Player(pygame.sprite.Sprite):
         self.feet = pygame.Rect(0, 0, self.rect.width * 0.5, 8) #Créer un rectangle aux pieds du joueur
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker (Initialisation)
 
-    def save_location(self): 
+    def save_location(self):
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker
 
     def change_anim(self, name): #Méthode qui s'occupe des animations du personnage
         self.image = self.images[name] 
         self.image.set_colorkey([255, 255, 255])
 
-    def move_right(self): 
+    def move_right(self): #Fonction pour avancer à droite
         self.position[0] += 3* 0.8
     
-    def move_left(self):
+    def move_left(self): #Fonction pour avancer à gauche
         self.position[0] -= 3* 0.8
     
-    def move_up(self):
+    def move_up(self): #Fonction pour avancer en haut
         self.position[1] -= 3* 0.8
     
-    def move_down(self):
+    def move_down(self): #Fonction pour avancer en bas
         self.position[1] += 3* 0.8
     
-    def move_upAndright(self):
+    def move_upAndright(self): #Fonction pour avancer en haut à droite
         self.position[0] += 2.115* 0.8
         self.position[1] -= 2.115* 0.8
     
-    def move_upAndleft(self):
+    def move_upAndleft(self): #Fonction pour avancer en haut à gauche
         self.position[0] -=2.115 * 0.8
         self.position[1] -= 2.115* 0.8
     
-    def move_downAndleft(self):
+    def move_downAndleft(self): #Fonction pour avancer en bas à gauche
         self.position[0] -= 2.115* 0.8
         self.position[1] += 2.115* 0.8
     
-    def move_downAndright(self):
+    def move_downAndright(self): #Fonction pour avancer en haut à droite
         self.position[0] += 2.115* 0.8
         self.position[1] += 2.115* 0.8
 
-    def bougepas(self):
+    def bougepas(self): #Fonction permettant d'immobiliser le personnage
         self.position[0] -= 0
         self.position[1] -= 0
 
@@ -61,14 +61,14 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = self.position
         self.feet.midbottom = self.rect.midbottom
 
-    def move_back(self): #Peermet de revenir à la position d'avant (utile pour les collisions)
+    def move_back(self): #Permet de revenir à la position d'avant (utile pour les collisions)
         self.position = self.old_position
         self.rect.topleft =self.position
         self.feet.midbottom = self.rect.midbottom
 
         
 
-    def get_image(self, x, y):
+    def get_image(self, x, y): #Permet d'actualiser la map lorsque le joueur avance
         image = pygame.Surface([32, 32])
         image.blit(self.sprite_sheet, (0,0), (x, y, 32, 32))
         return image
