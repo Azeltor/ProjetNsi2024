@@ -21,7 +21,7 @@ Fournissez des instructions détaillées sur la manière de jouer à votre jeu, 
 
     
 
--Le projet est libre de droit et est réalisé pour un projet en NSI
+-Le projet n'est pas libre de droit et est réalisé pour un projet en NSI
 
 
 
