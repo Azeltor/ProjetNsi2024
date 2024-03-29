@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="1395">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="18" nextobjectid="1411">
  <tileset firstgid="1" source="tileset_nsi.tsx"/>
  <tileset firstgid="3801" source="tileset_nsi2.tsx"/>
  <layer id="1" name="Fond" width="100" height="100">
@@ -609,7 +609,6 @@
   <object id="807" type="collision" x="2496" y="352" width="32" height="288"/>
   <object id="808" type="collision" x="2464" y="352" width="32" height="160"/>
   <object id="809" type="collision" x="2432" y="352" width="32" height="128"/>
-  <object id="810" type="collision" x="2368" y="352" width="64" height="32"/>
   <object id="811" type="collision" x="1504" y="352" width="864" height="128"/>
   <object id="812" type="collision" x="1408" y="352" width="96" height="96"/>
   <object id="813" type="collision" x="1248" y="352" width="160" height="64"/>
@@ -1153,5 +1152,13 @@
   <object id="1391" x="672" y="2144" width="160" height="128"/>
   <object id="1392" x="699.978" y="2271.76" width="138.568" height="32.7899"/>
   <object id="1394" x="668" y="2301.64" width="164.727" height="26"/>
+ </objectgroup>
+ <objectgroup id="17" name="warp">
+  <object id="1402" type="warp_grotte" x="512" y="2176" width="64" height="32"/>
+  <object id="1403" type="warp_grotte" x="736" y="2400" width="64" height="32"/>
+  <object id="1404" type="warp_secret" x="2848" y="1952" width="32" height="32"/>
+  <object id="1405" type="warp_montagne" x="3168" y="1536" width="32" height="128"/>
+  <object id="1406" type="warp_fest" x="2880" y="928" width="32" height="64"/>
+  <object id="1407" type="warp_fnord" x="2368" y="384" width="64" height="32"/>
  </objectgroup>
 </map>
