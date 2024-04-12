@@ -1,6 +1,5 @@
 import pygame
 
-
 max_health = 100
 health = 20
 ratio = health / max_health
