@@ -1,4 +1,4 @@
-
+import pygame
 
 
 pygame.draw.rect(screen, "red", (250, 250, 300, 40))
