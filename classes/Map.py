@@ -5,7 +5,7 @@ from Constantes import constante_partie as cp
 
 
 @dataclass
-class Map:
+class Map: #Initialisaiton de la classe Map
     name: str
     walls: list[pg.Rect]
     group: pyscroll.PyscrollGroup
@@ -20,7 +20,7 @@ class MapManager: #Initialisation de la carte
         self.register_map("grotte")
         self.teleport_player()
     
-    def check_collisions(self):
+    def check_collisions(self): #Permet de savoir si le joueur rencontre une collision
         self.get_group().update()
         for sprite in self.get_group().sprites():
             if sprite.feet.collidelist(self.get_walls()) > -1:

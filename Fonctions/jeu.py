@@ -13,10 +13,10 @@ info = pygame.display.Info()
 
 
 def fenetre(menuoujeu, nom_fenetre):
-    pygame.display.set_caption(nom_fenetre)
+    pygame.display.set_caption(nom_fenetre) #Met le nom du jeu dans le fenêtre en haut à gauche
     pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\Logo.png')) #Chargement du logo
     if menuoujeu == 'Menu':
-        cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE) #Chargement du menu (il s'adapte à l'écran du joueur)
+        cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE) #Chargement du menu selon les résolutions de l'ordinateur du joueur
     
 
 def musiquemenu():
@@ -59,7 +59,7 @@ def menu():
             Musique[1].draw(cp.NomEcran)
         for event in pygame.event.get():  # Récupère les actions du joueur
             if event.type == pygame.QUIT:  # Si le joueur veut quitter la fenêtre
-                pygame.quit()
+                pygame.quit() #Quitte la fenêtre
                 sys.exit()
             if Jouer[0].est_dans(): #Si le curseur est dans le bouton noir
                 Jouer[0].rect.topleft = (-500,Jouer[0].coordonnee[1]) #Met le bouton Noir en dehors de la résolution
@@ -95,11 +95,11 @@ def menu():
                 Quitter[1].rect.topleft = (-800 ,Quitter[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
             if Icone.rect.collidepoint(pygame.mouse.get_pos()) and event.type == pygame.MOUSEBUTTONUP:  # Si un clic de souris est détecté
                 if event.button == 1:
-                    pygame.display.toggle_fullscreen()
+                    pygame.display.toggle_fullscreen() #Met le jeu en plein écran selon les résolutions de l'ordinateur du joueur
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if Musique[0].est_dans() and Musique[0].clique(cp.NomEcran):
-                    pygame.mixer.music.pause() # Si le bouton musique "On" a été cliqué, le menu se réactualise en mettant le bouton musique "Off" et la musique est coupé
-                    cp.music_enabled = False
+                    pygame.mixer.music.pause() # Si le bouton musique "On" a été cliqué, le menu se réactualise en mettant le bouton musique "Off"
+                    cp.music_enabled = False #Coupe la musique
                     Musique[0].rect.topleft = (-2000, Musique[0].coordonnee[1]) #Localisation du  bouton musique
                     Musique[1].rect.topleft = (Musique[1].coordonnee[0] - Musique[1].width / 2-67, Musique[1].coordonnee[1])
                 elif Musique[1].est_dans() and Musique[1].clique(cp.NomEcran):

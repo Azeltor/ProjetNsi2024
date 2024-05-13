@@ -25,39 +25,39 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey([255, 255, 255])
 
     def move_right(self): #Fonction pour avancer à droite
-        self.position[0] += 3* 0.8
+        self.position[0] += 3* 0.8 #Valeur de déplacement vers la droite
     
     def move_left(self): #Fonction pour avancer à gauche
-        self.position[0] -= 3* 0.8
+        self.position[0] -= 3* 0.8 #Valeur de déplacement vers la gauche
     
     def move_up(self): #Fonction pour avancer en haut
-        self.position[1] -= 3* 0.8
+        self.position[1] -= 3* 0.8 #Valeur de déplacement vers le haut
     
     def move_down(self): #Fonction pour avancer en bas
-        self.position[1] += 3* 0.8
+        self.position[1] += 3* 0.8 #Valeur de déplacement vers le bas
     
     def move_upAndright(self): #Fonction pour avancer en haut à droite
-        self.position[0] += 2.115* 0.8
-        self.position[1] -= 2.115* 0.8
+        self.position[0] += 2.115* 0.8 #Valeur de déplacement vers la droite
+        self.position[1] -= 2.115* 0.8 #Valeur de déplacement vers le haut
     
     def move_upAndleft(self): #Fonction pour avancer en haut à gauche
-        self.position[0] -=2.115 * 0.8
-        self.position[1] -= 2.115* 0.8
+        self.position[0] -=2.115 * 0.8 #Valeur de déplacement vers la gauche
+        self.position[1] -= 2.115* 0.8 #Valeur de déplacement vers le haut
     
     def move_downAndleft(self): #Fonction pour avancer en bas à gauche
-        self.position[0] -= 2.115* 0.8
-        self.position[1] += 2.115* 0.8
+        self.position[0] -= 2.115* 0.8 #Valeur de déplacement vers la droite
+        self.position[1] += 2.115* 0.8 #Valeur de déplacement vers le bas
     
     def move_downAndright(self): #Fonction pour avancer en haut à droite
-        self.position[0] += 2.115* 0.8
-        self.position[1] += 2.115* 0.8
+        self.position[0] += 2.115* 0.8 #Valeur de déplacement vers le bas
+        self.position[1] += 2.115* 0.8 #Valeur de déplacement vers la droite
 
     def bougepas(self): #Fonction permettant d'immobiliser le personnage
         self.position[0] -= 0
         self.position[1] -= 0
 
         
-    def update(self):
+    def update(self): #Permet d'actualiser la position du joueur
         self.rect.topleft = self.position
         self.feet.midbottom = self.rect.midbottom
 

@@ -15,7 +15,7 @@ timer = pygame.time.Clock()
 
 NomEcran = None
 NomEcranJeu = None
-music_enabled = True
+music_enabled = True #La musique sera jouée par défaut lorsque le joueur est dans le menu
 
-SonMenu = 'Son\somambiant.mp3'
+SonMenu = 'Son\somambiant.mp3' #Ajout de la musique présente dans le menu du jeu
 
