@@ -92,9 +92,9 @@ class Game:
                 self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
         enter_grotte = tmx_data.get_object_by_name('dehors1')
         self.enter_grotte_rect= pygame.Rect(warp_grotte1.x, warp_grotte1.y, warp_grotte1.width, warp_grotte1.height)
-        dedans1_spawn_point = tmx_data.get_object_by_name('dedans1')
-        self.player.position[0] = dedans1_spawn_point.x
-        self.player.position[1] = dedans1_spawn_point.y -20
+                dedans1_spawn_point = tmx_data.get_object_by_name('dehors1')
+        self.player.position[0] = dehors1_spawn_point.x
+        self.player.position[1] = dehors1_spawn_point.y +20
 
 
     def update(self):
