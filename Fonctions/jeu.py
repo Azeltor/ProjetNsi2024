@@ -66,7 +66,7 @@ def menu():
                 Jouer[1].rect.topleft = (Jouer[1].coordonnee[0] - Jouer[1].width/2,Jouer[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
             if Jouer[1].clique(cp.NomEcran): #Si on clique gauche dans la zone du bouton
                 pygame.quit()
-                game1 = Game()
+                game1 = Game("world")
                 if cp.music_enabled == True:
                     musiquemenu()
                     game1.run()
