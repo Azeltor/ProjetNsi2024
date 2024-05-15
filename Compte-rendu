@@ -1,0 +1,230 @@
+Exemple :
+
+# Rapport du xx/xx/xxxx
+## Tâches faites
+- Nom de la tache faite (Prénom)
+## Tâches à faire ---> Celle qu'on fait demain ou dans la semaine
+### Tâches à faire précédemment cités ---> Celle qu'on était censé faire ou qu'on a pas fini avant le rapport
+- Nom de la tache à faire (Prénom)
+### Tâches à faire ajoutés lors de cette séance
+- Nom de la tache à faire ajoutée aujourd'hui (Prénom)
+## Notes
+Blablablablablablablablabla... (Nom de la personne)
+Blablablablablablablablablabla... (Nom de la personne)
+Etc.
+
+Rapport du 17/02/2024 :
+##Absent
+  - Tom
+##Tâches faites
+  - Fenêtre de jeu (Evan)
+  - Tileset (Gabriel) :
+    - Classe tilemap et tile
+  - Fait les maps (Gabriel) (en cours)
+  - Interface du menu (Baptiste et Evan)
+  - Débogage de la classe Bouton et de la fonction check_play_button (Gabriel, Baptiste)
+  - Fait les boutons Jouer/Quitter/Options (Baptiste)
+##Tâches à faire
+  - Changer l'affichage des boutons quand on passe dessus
+  - Classe ennemis
+  - Classe joueur
+  - faire les menus
+  - faire les sons
+  - faire les maps
+###Tâches à faire précédemment cités
+##Notes
+
+Rapport du 18/02/2024 :
+##Absent
+  - Tom
+##Tâches faites
+  - Fait les maps (Gabriel) (en cours)
+  - Débogage de la classe Bouton et de la fonction check_play_button (Gabriel, Baptiste)
+  - Terminer les boutons Jouer/Quitter/Options (noir) (Baptiste)
+  - Fait les maps (Gabriel) (en cours)
+  - Création des méthodes draw, est_dans et clique de Bouton (Evan)
+  - Modification de la boucle de jeux pour changer l'affichage des boutons quand on passe la souris dessus (Gabriel)
+  - Création de l'icône de note de musique On/Off (Baptiste)
+##Tâches à faire
+  - Passer sur Github
+  - Régler les bugs de la classe bouttons
+  - Implémenter la musique
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - Classe joueur
+  - faire les menus
+  - faire les sons
+  - faire les maps
+##Notes
+
+Rapport du 19/02/2024:
+##Absent
+  - Tom
+##Tâches faites
+  - Organisation du Github (Evan, Gabriel, Baptiste)
+  - Logo plein écran (première version) (Baptiste)
+  - Débugage et commentaire de la classe Boutton (Gabriel)
+  - Changement du boutton de musique quand on coupe la musique et arrêt de la musique (Evan, Gabriel, Baptiste)
+##Tâches à faire
+  - Régler le bug pour le son
+  - Faire apparraître le personnage sur la carte quand on clique sur le boutton jouer
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - Classe joueur
+  - faire les options
+  - faire les sons
+  - faire les maps
+##Notes
+
+Rapport du 20/02/2024 :
+##Absent 
+  - Tom
+##Tâches faites
+- Régler le bug avec le son (Evan)
+- Création du bouton musiques Off (Baptiste)
+- Implémentation + Optimisation des boutons (Gabriel,Evan)
+##Tâches à faire
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - Classe joueur
+  - faire les options
+  - faire les sons
+  - faire les maps
+  ##Notes
+
+
+Rapport du 21/02/2024 :
+##Absent 
+  - Tom
+  - Evan
+  - Baptiste
+##Tâches faites
+  - Transformation du menu en fonction (Gabriel)
+##Tâches à faire
+  - Faire le logo du jeu
+  - Afficher le logo sur la fenêtre (en haut à gauche)
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - Classe joueur
+  - faire les options
+  - faire les sons
+  - faire les maps
+  ##Notes
+
+Rapport du 22/02/2024 :  
+##Absent 
+  - Tom
+##Tâches faites
+  - Transformation en fonction de toutes les fonctions nécessaire au jeu (menu, fenêtre, musique ...) (Evan, Gabriel)
+  - Afficher le logo sur la fenêtre (en haut à gauche) (Gabriel)
+  - Création du logo du jeu (Baptiste)
+##Tâches à faire
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - Classe joueur
+  - faire les options
+  - faire les sons
+  - faire les maps
+##Notes
+
+Rapport du 23/02/2024 :  
+##Absent 
+  - Tom
+  - Gabriel
+  - Evan
+  - Baptiste
+##Tâches faites
+##Tâches à faire
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - Classe joueur
+  - faire les options
+  - faire les sons
+  - faire les maps
+##Notes
+
+Rapport du 24/02/2024 :  
+##Absent 
+  - Tom
+##Tâches faites
+  - Rangement des fonctions et fluidification du code (Evan)
+##Tâches à faire
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - Classe joueur
+  - faire les options
+  - faire les sons
+  - faire les maps
+##Notes
+
+Rapport du 25/02/2024 :  
+##Absent 
+  - Tom
+  - Baptiste
+##Tâches faites
+  - Fini la map principale (Gabriel)
+  - Chargement de la map (Gabriel, Evan)
+  - Création des classes Camera, Game et Joueur (Evan, Gabriel)
+    - Création des mouvements (Evan)
+    - Mise en place de la vitesse et débugage des classes (Gabriel, Evan)
+  - Mise en place des collisions sur la map
+##Tâches à faire
+  - Faire les maps secondaires
+###Tâches à faire précédemment cités
+  - Classe ennemis
+  - faire les options
+  - faire les sons
+##Notes
+
+Rapport du 26/02/2024 :  
+##Absent 
+  - Tom
+  - Baptiste
+##Tâches faites
+ - Mise en place du système de collisions (Evan)
+##Tâches à faire
+###Tâches à faire précédemment cités
+  - Faire les maps secondaires
+  - Classe ennemis
+  - faire les options
+  - faire les sons
+##Notes
+
+Rapport du 27/02/2024 au 02/03/2024 :  
+##Absent 
+  - Tom
+  - Baptiste
+  - Evan
+  - Gabriel
+##Tâches faites
+##Tâches à faire
+###Tâches à faire précédemment cités
+  - Faire les maps secondaires
+  - Classe ennemis
+  - faire les options
+  - faire les sons
+##Notes
+
+Rapport du 03/03/2024 :  
+##Absent 
+  - Tom
+  - Baptiste
+  - Gabriel
+##Tâches faites
+  - Création d'une classe pour charger les maps (nécessaires pour changer de zone/maps) (Evan)
+##Tâches à faire
+  - Refaire les colisions des maps
+###Tâches à faire précédemment cités
+  - Faire les maps secondaires
+  - Classe ennemis
+  - faire les options
+  - faire les sons
+##Notes
+
+Rapport du 15/03/2024:
+##Absent
+  - Tom
+  - Evan
+##Tâches faites
+- Ajout de commentaires dans les codes (Baptiste)
+- réglage de bug sur la map (collisions) + création de la grotte (Gabriel)
