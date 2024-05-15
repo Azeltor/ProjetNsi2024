@@ -1154,8 +1154,8 @@
   <object id="1394" type="collision" x="668" y="2301.64" width="164.727" height="26"/>
  </objectgroup>
  <objectgroup id="17" name="warp">
-  <object id="1402" type="warp_grotte" x="512" y="2176" width="64" height="32"/>
-  <object id="1403" type="warp_grotte" x="736" y="2400" width="64" height="32"/>
+  <object id="1402" name="dehors2" x="512" y="2176" width="64" height="32"/>
+  <object id="1403" name="dehors1" x="736" y="2400" width="64" height="32"/>
   <object id="1404" type="warp_secret" x="2848" y="1952" width="32" height="32"/>
   <object id="1405" type="warp_montagne" x="3168" y="1536" width="32" height="128"/>
   <object id="1406" type="warp_fest" x="2880" y="928" width="32" height="64"/>
