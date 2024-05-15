@@ -6,11 +6,14 @@
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
         "grotte.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 1,
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 800,
-                "y": 799.3333333333333
+                "x": 553.75,
+                "y": 1390
             }
         },
         "map_test.tmx": {
@@ -27,6 +30,14 @@
         "tileset_nsi2.tsx": {
             "scaleInDock": 0.75,
             "scaleInEditor": 0.25
+        },
+        "world.tmx": {
+            "scale": 1,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 649.5,
+                "y": 2195
+            }
         }
     },
     "last.imagePath": "D:/ProjetNsi2024/maps",
@@ -37,8 +48,8 @@
     ],
     "project": "sans titre.tiled-project",
     "recentFiles": [
-        "grotte.tmx",
         "tileset_nsi2.tsx",
+        "grotte.tmx",
         "map_test.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"

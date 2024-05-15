@@ -1,5 +1,6 @@
 '''Fichier Pour La Conception Du Menu'''
 import pygame, os
+os.chdir("D:/ProjetNsi2024")
 from Fonctions import jeu
 
 
@@ -14,6 +15,6 @@ jeu.menu()
 # executer os.chdir('Emplacement du fichier')
 
 '''Pour relancer le jeu'''
-#Relancer la console 
+#Relancer la console
 
 

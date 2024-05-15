@@ -72,13 +72,13 @@ class Game:
         for obj in tmx_data.objects:
             if obj.type == "collision":
                 self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
-        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
+        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  3)
         self.group.add(self.player)
         enter_grotte = tmx_data.get_object_by_name('dedans1')
         self.enter_grotte_rect = pygame.Rect(enter_grotte.x, enter_grotte.y, enter_grotte.width, enter_grotte.height)
         dedans1_spawn_point = tmx_data.get_object_by_name('dedans1')
         self.player.position[0] = dedans1_spawn_point.x
-        self.player.position[1] = dedans1_spawn_point.y
+        self.player.position[1] = dedans1_spawn_point.y - 50
 
 
     def switch_world(self):
@@ -91,12 +91,11 @@ class Game:
         for obj in tmx_data.objects:
             if obj.type == "collision":
                 self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
-        enter_grotte = tmx_data.get_object_by_name('dehors1')
-        self.enter_grotte_rect= pygame.Rect(warp_grotte1.x, warp_grotte1.y, warp_grotte1.width, warp_grotte1.height)
-        dedans1_spawn_point = tmx_data.get_object_by_name('dehors1')
-        self.player.position[0] = dehors1.x
-        self.player.position[1] = dehors1.y +20
-
+        enter_grotte = tmx_data.get_object_by_name('dedans1')
+        self.enter_grotte_rect= pygame.Rect(enter_grotte.x, enter_grotte.y, enter_grotte.width, enter_grotte.height)
+        dehors1_spawn_point = tmx_data.get_object_by_name('dehors1')
+        self.player.position[0] = dehors1_spawn_point.x
+        self.player.position[1] = dehors1_spawn_point.y+50
 
     def update(self):
         self.group.update()
