@@ -1,6 +1,5 @@
 '''Fichier Pour La Conception Du Menu'''
 import pygame, os
-
 from Fonctions import jeu
 
 
