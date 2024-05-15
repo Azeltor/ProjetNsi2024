@@ -4,16 +4,25 @@ import pyscroll
 from Fonctions.jeu import *
 from Constantes import constante_partie as cp
 from classes.Joueur import Player
-from classes.Map import *
+
 
 
 class Game:
     def __init__(self):
         cp.NomEcranJeu = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
-        self.player = Player(0, 0)
-        self.map_manager = MapManager(self.player)
-
-
+        tmx_data = pytmx.util_pygame.load_pygame('maps/world.tmx')
+        map_data = pyscroll.data.TiledMapData(tmx_data)
+        map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        map_layer.zoom = 2
+        self.player = Player(50 * 32, 80* 32)
+        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
+        self.group.add(self.player)
+        self.walls = []
+        for obj in tmx_data.objects:
+            if obj.type == "collision":
+                self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+        enter_grotte = tmx_data.get_object_by_name('enter_grotte')
+        self.enter_grotte_rect= pygame.Rect(enter_grotte.x, enter_grotte.y, enter_grotte.width, enter_grotte.height)
 
     def handle_input(self):
         pressed = pygame.key.get_pressed()
@@ -54,9 +63,49 @@ class Game:
             self.player.move_left() #Lorsque le joueur appuie sur "Q", le personnage avabce vers la gauche
             self.player.change_anim('left')
 
+    def switch_grotte(self):
+        tmx_data = pytmx.util_pygame.load_pygame('maps/grotte.tmx')
+        map_data = pyscroll.data.TiledMapData(tmx_data)
+        map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        map_layer.zoom = 2
+        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
+        self.walls = []
+        for obj in tmx_data.objects:
+            if obj.type == "collision":
+                self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+        enter_grotte = tmx_data.get_object_by_name('dedans1')
+        self.enter_grotte_rect= pygame.Rect(dedans1.x, dedans1.y, dedans1.width, dedans1.height)
+        dedans1_spawn_point = tmx_data.get_object_by_name('dedans1')
+        self.player.position[0] = dedans1_spawn_point.x
+        self.player.position[1] = dedans1_spawn_point.y -20
+
+
+    def switch_world(self):
+        tmx_data = pytmx.util_pygame.load_pygame('maps/world.tmx')
+        map_data = pyscroll.data.TiledMapData(tmx_data)
+        map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        map_layer.zoom = 2
+        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
+        self.walls = []
+        for obj in tmx_data.objects:
+            if obj.type == "collision":
+                self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+        enter_grotte = tmx_data.get_object_by_name('dehors1')
+        self.enter_grotte_rect= pygame.Rect(warp_grotte1.x, warp_grotte1.y, warp_grotte1.width, warp_grotte1.height)
+        dedans1_spawn_point = tmx_data.get_object_by_name('dedans1')
+        self.player.position[0] = dedans1_spawn_point.x
+        self.player.position[1] = dedans1_spawn_point.y -20
+
 
     def update(self):
-        self.map_manager.update() #Update (demander à Evan)
+        self.group.update()
+        if self.player.feet.colliderect(self.dehors1_rect):
+            self.switch_grotte()
+        for sprite in self.group.sprites():
+            if sprite.feet.collidelist(self.walls) >  -1:
+                sprite.move_back()
+
+
 
 
 
@@ -66,7 +115,8 @@ class Game:
             self.player.save_location() #Permet d'obtenir les coordonnées du joueur
             self.handle_input() #Détecte les mouvements du joueur
             self.update() #Appel Update
-            self.map_manager.draw() #Permet de dessiner la map
+            self.group.center(self.player.rect.center)
+            self.group.draw(cp.NomEcranJeu)
             pygame.display.flip() #Actualiser l'affichage de la map
 
 
