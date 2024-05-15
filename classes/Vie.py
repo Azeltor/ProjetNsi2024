@@ -11,8 +11,8 @@ class bar_de_vie():
   def draw(self, surface):
     #calcule le ratio de vie
     ratio = self.hp / self.max_hp
-    pygame.draw.rect(surface, "red", (self.x, self.y, self.w, self.h))
-    pygame.draw.rect(surface, "green", (self.x, self.y, self.w * ratio, self.h))
+    pygame.draw.rect(surface, "rouge", (self.x, self.y, self.w, self.h))
+    pygame.draw.rect(surface, "vert", (self.x, self.y, self.w * ratio, self.h))
 
 
 vie_joueur = bar_de_vie(250, 200, 300, 40, 100)
