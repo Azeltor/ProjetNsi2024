@@ -1,9 +1,9 @@
 import pygame, sys
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y): #Définit les coordonnées d'apparition du joueur 
+class Entity(pygame.sprite.Sprite):
+    def __init__(self, name, x, y): #Définit les coordonnées d'apparition du joueur 
         super().__init__()
-        self.sprite_sheet = pygame.image.load('Graphisme\Character\Prototype_Worksheet.png') #Charge la spritesheet avec les personnages
+        self.sprite_sheet = pygame.image.load(f"Graphisme\Character\{name}.png") #Charge la spritesheet avec les personnages
         self.image = self.get_image(0, 0) #Personnage en Idle
         self.image.set_colorkey([255, 255, 255])
         self.rect = self.image.get_rect()
@@ -74,3 +74,26 @@ class Player(pygame.sprite.Sprite):
         return image
     
    
+class Player(Entity):
+    def __init__(self):
+        super().__init__("test", 50*32, 80*32)
+        
+class NPC(Entity):
+    def __init__(self, name, nb_points):
+        super().__init__(name, 50*32, 80*32)
+        self.nb_points = nb_points
+        self.name = name
+        self.points = []
+        self.current_point = 0
+        
+    def teleport_spawn(self):
+        location = self.points[self.current_point]
+        self.position[0] = location.x
+        self.position[1] = location.y
+        self.save_location()
+        
+    def load_points(self, map):
+        for k in range(1, self.nb_points + 1):
+            point = (get_object_by_name(str(self.name)+'_path'+str(k)))
+            rect = pygame.Rect(point.x, point.y, point.width, point.height)
+            self.points.append(rect)

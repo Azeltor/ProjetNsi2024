@@ -4,7 +4,7 @@ import pyscroll
 from Fonctions.jeu import *
 from Constantes import constante_partie as cp
 from classes.Joueur import Player
-
+from classes.Joueur import NPC
 
 
 class Game:
@@ -15,14 +15,17 @@ class Game:
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         map_layer.zoom = 2
-        self.player = Player(25* 32, 80* 32)  #50 * 32, 80* 32
+        self.npc = [NPC("robin", 2)]
+        self.player = Player()  #50 * 32, 80* 32
+        self.teleport_npcs(self.map)
         self.walls = []
         for obj in tmx_data.objects:
             if obj.type == "collision":
                 self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
         self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
         self.group.add(self.player)
-
+        for pnj in npc:
+            self.group.add(pnj)
         enter_grotte = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'))
         self.enter_grotte_rect = (pygame.Rect(enter_grotte[0].x, enter_grotte[0].y, enter_grotte[0].width, enter_grotte[0].height),pygame.Rect(enter_grotte[1].x, enter_grotte[1].y, enter_grotte[1].width, enter_grotte[1].height))
 
@@ -64,6 +67,11 @@ class Game:
         elif pressed[pygame.K_q]:
             self.player.move_left() #Lorsque le joueur appuie sur "Q", le personnage avabce vers la gauche
             self.player.change_anim('left')
+
+    def teleport_npcs(self, map):
+        for pnj in self.npc:
+            NPC.load_points(npc, map)
+            NPC.teleport_spawn()
 
     def switch_grotte(self, indice):
         tmx_data = pytmx.util_pygame.load_pygame('maps/grotte.tmx')
