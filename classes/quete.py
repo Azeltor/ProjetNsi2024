@@ -55,17 +55,6 @@ class Quete:
     
    
     
-
-            si tu parle a ce pnj la :
-                attribue cette que la spécialement 
-            
-            
-
-            
-            
-      si il a pas de quete alors , proposer la quete qui sera stocker dans un dico 
-      ex : quete1, quete2 , quete3 , quete4 ---> vont être créer a la main , sont dans la classe objet
-        Puis on va devoir cherche le coffre , qui va contenir l'object que la quete demande
       
 
     def verifier_completion(self, joueur):
@@ -107,6 +96,8 @@ quetes_disponibles = {
     "quete9": quete9 }
 
 
+
+512 205028
 # A ajouter dans la classe joueur : self.
 
 # Faire 
