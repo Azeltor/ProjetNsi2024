@@ -11,6 +11,7 @@ class Quete:
         if self.quete_actuelle == None:
             if NPC.name == "Godefroy":
                 self.quete_actuelle= quete1
+                if 
             if NPC.name == "Guenièvre":
                 self.quete_actuelle= quete2
             if NPC.name == "Merlin":
@@ -51,11 +52,13 @@ class Quete:
       
 
     def verifier_completion(self, joueur):
+        quete_accomplit = []
         for objet in self.objets_requis:
             if not joueur.possede_objet(objet):
                 print(f"{joueur.nom} n'a pas encore tous les objets nécessaires pour compléter la quête '{self.titre}'.")
                 return False
         self.completee = True
+        quete_accomplit.append(self.quete_actuelle
         print(f"{joueur.nom} a complété la quête '{self.titre}'!")
         self.inventaire.pop
         self.quete_actuelle.pop
