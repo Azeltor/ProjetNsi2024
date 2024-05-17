@@ -1151,7 +1151,7 @@
   <object id="1390" type="collision" x="608" y="2112" width="64" height="128"/>
   <object id="1391" type="collision" x="672" y="2144" width="160" height="128"/>
   <object id="1392" type="collision" x="699.978" y="2271.76" width="138.568" height="32.7899"/>
-  <object id="1394" type="collision" x="668" y="2301.64" width="164.727" height="26"/>
+  <object id="1394" type="collision" x="668" y="2301.64" width="164.727" height="26.375"/>
  </objectgroup>
  <objectgroup id="17" name="warp">
   <object id="1402" name="dehors2" type="warp" x="512" y="2176" width="64" height="32"/>
