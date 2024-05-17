@@ -25,3 +25,6 @@ class Quete:
         return f"Quête: {self.titre}\nDescription: {self.description}\nObjets requis: {', '.join(self.objets_requis)}"
 
 # A ajouter dans la classe joueur : self.
+
+# Faire 
+ L'objet qu'on cherche sera toujours un coffre
