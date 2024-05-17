@@ -10,24 +10,23 @@ class Quete:
     def proposer_quete(self,joueur,Npc):
         if self.quete_actuelle == None:
             if NPC.name == "Godefroy":
-                self.quete_actuelle
-                
+                self.quete_actuelle= quete1
             if NPC.name == "Guenièvre":
-                
-            if NPC.name == "Lancelot":
-                
-            if NPC.name == "Morgane":
-                
-            if NPC.name == "Arthur":
-                
-            if NPC.name == "Élaine":
-
-            if NPC.name == "Galahad":
-                
+                self.quete_actuelle= quete2
             if NPC.name == "Merlin":
-                
+                self.quete_actuelle= quete3
+            if NPC.name == "Morgane":
+                self.quete_actuelle= quete4
+            if NPC.name == "Arthur":
+                self.quete_actuelle= quete5
+            if NPC.name == "Élaine":
+                self.quete_actuelle= quete6
+            if NPC.name == "Galahad":
+                self.quete_actuelle= quete7
+            if NPC.name == "Lancelot":
+                self.quete_actuelle= quete8
             if NPC.name == "Tristan":
-          
+                self.quete_actuelle= quete9
             
    
     
