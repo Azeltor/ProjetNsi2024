@@ -15,7 +15,7 @@ class Game:
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         map_layer.zoom = 2
-        self.npc = [NPC("robin", 2)]
+        self.npc = [NPC("robin", 2), NPC("personnage_00", 2)]
         self.player = Player()  #50 * 32, 80* 32
         self.teleport_npcs(self.map)
         self.walls = []
@@ -137,7 +137,10 @@ class Game:
             if sprite.feet.collidelist(self.walls) >  -1:
                 sprite.move_back()
         for pnj in range(len(self.npc)):
-            self.npc[pnj].move()
+            if self.player.feet.colliderect(self.enter_grotte_rect[1]):
+                self.npc[pnj].bougepas()
+            else:
+                self.npc[pnj].move()
 
 
 
