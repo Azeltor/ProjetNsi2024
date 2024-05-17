@@ -4,30 +4,47 @@ class Quete:
         self.description = description
         self.objets_requis = objets_requis
         self.completee = False
+        self.quete_accomplit = []
 
 
 
     def proposer_quete(self,joueur,Npc):
         if self.quete_actuelle == None:
-            if NPC.name == "Godefroy":
-                self.quete_actuelle= quete1
-                if 
+            if NPC.name == "Godefroy" and self.quete_accomplit :
+                self.quete_actuelle = quete1
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Guenièvre":
                 self.quete_actuelle= quete2
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Merlin":
                 self.quete_actuelle= quete3
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Morgane":
                 self.quete_actuelle= quete4
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Arthur":
                 self.quete_actuelle= quete5
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Élaine":
                 self.quete_actuelle= quete6
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Galahad":
                 self.quete_actuelle= quete7
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Lancelot":
                 self.quete_actuelle= quete8
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
+                
             if NPC.name == "Tristan":
                 self.quete_actuelle= quete9
+            else : print(f"{NPC.name} Je vous ais deja donner la quete '{self.titre}', tete de neuille.")
             
    
     
@@ -52,7 +69,6 @@ class Quete:
       
 
     def verifier_completion(self, joueur):
-        quete_accomplit = []
         for objet in self.objets_requis:
             if not joueur.possede_objet(objet):
                 print(f"{joueur.nom} n'a pas encore tous les objets nécessaires pour compléter la quête '{self.titre}'.")
