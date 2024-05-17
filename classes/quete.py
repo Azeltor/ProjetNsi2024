@@ -9,7 +9,7 @@ class Quete:
 
     def proposer_quete(self,joueur):
       si il a pas de quete alors , proposer la quete qui sera stocker dans un dico 
-      ex : quete1, quete2 , quete3 , quete4 ---> vont être créer a la main
+      ex : quete1, quete2 , quete3 , quete4 ---> vont être créer a la main , sont dans la classe objet
       
 
     def verifier_completion(self, joueur):
@@ -18,6 +18,7 @@ class Quete:
                 print(f"{joueur.nom} n'a pas encore tous les objets nécessaires pour compléter la quête '{self.titre}'.")
                 return False
         self.completee = True
+        self.inventaire.pop
         print(f"{joueur.nom} a complété la quête '{self.titre}'!")
         return True
 
