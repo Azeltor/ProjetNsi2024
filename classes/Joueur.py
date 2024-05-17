@@ -1,5 +1,4 @@
-import pygame, sys
-from classes.Game import Game
+import pytmx, pygame, sys
 
 class Entity(pygame.sprite.Sprite):
     def __init__(self, name, x, y): #Définit les coordonnées d'apparition du joueur 
@@ -89,6 +88,28 @@ class NPC(Entity):
         self.points = []
         self.current_point = 0
         
+    def move(self):
+        current_point = self.current_point
+        next_point = self.current_point + 1
+        
+        if next_point >= self.nb_points:
+            next_point = 0
+        
+        current_rect = self.points[current_point]
+        next_rect = self.points[next_point]
+        
+        if current_rect.y < next_rect.y:
+            self.move_down()
+        elif current_rect.y > next_rect.y:
+            self.move_up()
+        elif current_rect.x < next_rect.x:
+            self.move_right()
+        elif current_rect.x > next_rect.x:
+            self.move_left()
+            
+        if self.rect.colliderect(next_rect):
+            self.current_point = next_point
+        
     def teleport_spawn(self):
         location = self.points[self.current_point]
         self.position[0] = location.x
@@ -97,6 +118,6 @@ class NPC(Entity):
         
     def load_points(self, map):
         for k in range(1, self.nb_points + 1):
-            point = (Game.tmx_data.get_object_by_name(str(self.name)+'_path'+str(k)))
+            point = (pytmx.util_pygame.load_pygame('maps/'+str(map)+'.tmx').get_object_by_name(str(self.name)+'_path'+str(k)))
             rect = pygame.Rect(point.x, point.y, point.width, point.height)
             self.points.append(rect)

@@ -24,7 +24,7 @@ class Game:
                 self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
         self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
         self.group.add(self.player)
-        for pnj in npc:
+        for pnj in self.npc:
             self.group.add(pnj)
         enter_grotte = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'))
         self.enter_grotte_rect = (pygame.Rect(enter_grotte[0].x, enter_grotte[0].y, enter_grotte[0].width, enter_grotte[0].height),pygame.Rect(enter_grotte[1].x, enter_grotte[1].y, enter_grotte[1].width, enter_grotte[1].height))
@@ -69,9 +69,9 @@ class Game:
             self.player.change_anim('left')
 
     def teleport_npcs(self, map):
-        for pnj in self.npc:
-            NPC.load_points(pnj, map)
-            NPC.teleport_spawn()
+        for pnj in range(len(self.npc)):
+            self.npc[pnj].load_points(self.map)
+            self.npc[pnj].teleport_spawn()
 
     def switch_grotte(self, indice):
         tmx_data = pytmx.util_pygame.load_pygame('maps/grotte.tmx')
@@ -94,6 +94,7 @@ class Game:
         dedans_spawn_point = (tmx_data.get_object_by_name('dedans1'), tmx_data.get_object_by_name('dedans2'))
         self.player.position[0] = dedans_spawn_point[indice].x
         self.player.position[1] = dedans_spawn_point[indice].y - 40
+        self.teleport_npcs(self.map)
 
     def switch_world(self, indice):
         tmx_data = pytmx.util_pygame.load_pygame('maps/world.tmx')
@@ -119,6 +120,7 @@ class Game:
         dehors_spawn_point = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'))
         self.player.position[0] = dehors_spawn_point[indice].x
         self.player.position[1] = dehors_spawn_point[indice].y+20
+        self.teleport_npcs(self.map)
 
     def update(self):
         self.group.update()
@@ -134,6 +136,8 @@ class Game:
         for sprite in self.group.sprites():
             if sprite.feet.collidelist(self.walls) >  -1:
                 sprite.move_back()
+        for pnj in range(len(self.npc)):
+            self.npc[pnj].move()
 
 
 

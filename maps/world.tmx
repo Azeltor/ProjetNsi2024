@@ -1162,7 +1162,7 @@
   <object id="1407" type="warp" x="2368" y="384" width="64" height="32"/>
  </objectgroup>
  <objectgroup id="18" name="pnj_test">
-  <object id="1412" name="test_path2" x="1664" y="2496" width="32" height="32"/>
-  <object id="1413" name="test_path1" x="1824" y="2496" width="32" height="32"/>
+  <object id="1412" name="robin_path2" x="1664" y="2496" width="32" height="32"/>
+  <object id="1413" name="robin_path1" x="1824" y="2496" width="32" height="32"/>
  </objectgroup>
 </map>
