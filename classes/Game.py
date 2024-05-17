@@ -15,7 +15,7 @@ class Game:
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         map_layer.zoom = 2
-        self.npc = [NPC("robin", 2)]
+        self.npc = [NPC("robin", 2), NPC("personnage_00", 2)]
         self.player = Player()  #50 * 32, 80* 32
         self.teleport_npcs(self.map)
         self.walls = []
@@ -28,6 +28,10 @@ class Game:
             self.group.add(pnj)
         enter_grotte = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'))
         self.enter_grotte_rect = (pygame.Rect(enter_grotte[0].x, enter_grotte[0].y, enter_grotte[0].width, enter_grotte[0].height),pygame.Rect(enter_grotte[1].x, enter_grotte[1].y, enter_grotte[1].width, enter_grotte[1].height))
+
+
+        enter_foret = tmx_data.get_object_by_name('Foret1')
+        self.enter_foret_rect = pygame.Rect(enter_foret.x, enter_foret.y, enter_foret.width, enter_foret.height)
 
     def handle_input(self):
         pressed = pygame.key.get_pressed()
@@ -117,14 +121,52 @@ class Game:
         enter_grotte = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'))
         self.enter_grotte_rect = (pygame.Rect(enter_grotte[0].x, enter_grotte[0].y, enter_grotte[0].width, enter_grotte[0].height),pygame.Rect(enter_grotte[1].x, enter_grotte[1].y, enter_grotte[1].width, enter_grotte[1].height))
 
-        dehors_spawn_point = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'))
+        enter_foret = tmx_data.get_object_by_name('Foret1')
+        self.enter_foret_rect = pygame.Rect(enter_foret.x, enter_foret.y, enter_foret.width, enter_foret.height)
+
+        dehors_spawn_point = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'), tmx_data.get_object_by_name('Foret1'))
         self.player.position[0] = dehors_spawn_point[indice].x
-        self.player.position[1] = dehors_spawn_point[indice].y+20
+        self.player.position[1] = dehors_spawn_point[indice].y+30
         self.teleport_npcs(self.map)
 
+    def switch_foret(self, indice):
+        tmx_data = pytmx.util_pygame.load_pygame('maps/foret.tmx')
+        map_data = pyscroll.data.TiledMapData(tmx_data)
+        map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        map_layer.zoom = 2
+        self.map = "foret"
+
+        self.walls = []
+        for obj in tmx_data.objects:
+            if obj.type == "collision":
+                self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+
+        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  1)
+        self.group.add(self.player)
+
+        enter_foret = (tmx_data.get_object_by_name('Foret2'), tmx_data.get_object_by_name('Cache1'), tmx_data.get_object_by_name('Cache2') )
+        self.enter_foret_rect = (pygame.Rect(enter_foret[0].x, enter_foret[0].y, enter_foret[0].width, enter_foret[0].height), pygame.Rect(enter_foret[1].x, enter_foret[1].y, enter_foret[1].width, enter_foret[1].height), pygame.Rect(enter_foret[2].x, enter_foret[2].y, enter_foret[2].width, enter_foret[2].height))
+
+        dehors_spawn_point = (tmx_data.get_object_by_name('Foret2'), tmx_data.get_object_by_name('Cache2'), tmx_data.get_object_by_name('Cache1'))
+        self.player.position[0] = dehors_spawn_point[indice].x
+        self.player.position[1] = dehors_spawn_point[indice].y
+        
+        
     def update(self):
         self.group.update()
         a = 0
+        if self.map == 'foret' and self.player.feet.colliderect(self.enter_foret_rect[0]):
+            self.switch_world(2)
+        if self.map == 'world' and self.player.feet.colliderect(self.enter_foret_rect):
+            self.switch_foret(0)
+            self.player.position[1] -= 40
+        if self.map == 'foret' and self.player.feet.colliderect(self.enter_foret_rect[1]):
+            self.switch_foret(1) 
+            self.player.position[0] -= 40
+            self.player.position[1] += 40
+        if self.map == 'foret' and self.player.feet.colliderect(self.enter_foret_rect[2]):
+            self.switch_foret(2)
+            self.player.position[1] += 40
         if self.map == "world" and self.player.feet.colliderect(self.enter_grotte_rect[0]):
                 self.switch_grotte(0)
         if self.map == "grotte" and self.player.feet.colliderect(self.enter_grotte_rect[0]):
@@ -137,7 +179,10 @@ class Game:
             if sprite.feet.collidelist(self.walls) >  -1:
                 sprite.move_back()
         for pnj in range(len(self.npc)):
-            self.npc[pnj].move()
+            if self.player.feet.colliderect(self.enter_grotte_rect[1]):
+                self.npc[pnj].bougepas()
+            else:
+                self.npc[pnj].move()
 
 
 
