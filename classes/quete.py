@@ -9,6 +9,36 @@ class Quete:
 
     def proposer_quete(self,joueur,Npc):
         if self.quete_actuelle == None:
+            if NPC.name == "Godefroy":
+                self.quete_actuelle
+                
+            if NPC.name == "Guenièvre":
+                
+            if NPC.name == "Lancelot":
+                
+            if NPC.name == "Morgane":
+                
+            if NPC.name == "Arthur":
+                
+            if NPC.name == "Élaine":
+
+            if NPC.name == "Galahad":
+                
+            if NPC.name == "Merlin":
+                
+            if NPC.name == "Tristan":
+          
+            
+   
+    
+    
+    
+    
+    
+    
+   
+    
+
             si tu parle a ce pnj la :
                 attribue cette que la spécialement 
             
@@ -27,8 +57,9 @@ class Quete:
                 print(f"{joueur.nom} n'a pas encore tous les objets nécessaires pour compléter la quête '{self.titre}'.")
                 return False
         self.completee = True
-        self.inventaire.pop
         print(f"{joueur.nom} a complété la quête '{self.titre}'!")
+        self.inventaire.pop
+        self.quete_actuelle.pop
         return True
 
     def __str__(self):
