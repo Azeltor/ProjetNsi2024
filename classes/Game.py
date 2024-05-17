@@ -70,7 +70,7 @@ class Game:
 
     def teleport_npcs(self, map):
         for pnj in self.npc:
-            NPC.load_points(npc, map)
+            NPC.load_points(pnj, map)
             NPC.teleport_spawn()
 
     def switch_grotte(self, indice):

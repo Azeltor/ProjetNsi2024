@@ -1,4 +1,5 @@
 import pygame, sys
+from classes.Game import Game
 
 class Entity(pygame.sprite.Sprite):
     def __init__(self, name, x, y): #Définit les coordonnées d'apparition du joueur 
@@ -96,6 +97,6 @@ class NPC(Entity):
         
     def load_points(self, map):
         for k in range(1, self.nb_points + 1):
-            point = (get_object_by_name(str(self.name)+'_path'+str(k)))
+            point = (Game.tmx_data.get_object_by_name(str(self.name)+'_path'+str(k)))
             rect = pygame.Rect(point.x, point.y, point.width, point.height)
             self.points.append(rect)
