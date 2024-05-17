@@ -16,7 +16,8 @@ class Player(pygame.sprite.Sprite):
         } #Différentes images pour les actions différentes du joueur
         self.feet = pygame.Rect(0, 0, self.rect.width * 0.5, 8) #Créer un rectangle aux pieds du joueur
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker (Initialisation)
-
+        self.inventaire = []
+        
     def save_location(self):
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker
 
