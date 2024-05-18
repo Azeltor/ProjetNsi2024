@@ -78,7 +78,7 @@ class Entity(pygame.sprite.Sprite):
    
 class Player(Entity):
     def __init__(self):
-        super().__init__("test", 52*32, 79*32)
+        super().__init__("test", 86*32, 30*32)
         
 class NPC(Entity):
     def __init__(self, name, nb_points):
