@@ -43,6 +43,7 @@ def menu():
     while True:
         # Arrière Plan
         cp.timer.tick(cp.fps)
+        pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
         cp.NomEcran.blit(pygame.image.load('Graphisme\Background\Bg.jpg'), (0, 0)) #Chargement de l'arrière plan
         # Dessiner les boutons
         Jouer[0].draw(cp.NomEcran)
@@ -66,7 +67,7 @@ def menu():
                 Jouer[1].rect.topleft = (Jouer[1].coordonnee[0] - Jouer[1].width/2,Jouer[1].coordonnee[1]) #Met le bouton Orange à la place du bouton Noir
             if Jouer[1].clique(cp.NomEcran): #Si on clique gauche dans la zone du bouton
                 pygame.quit()
-                game1 = Game("world")
+                game1 = Game("world", 'Numeric Project v1.0')
                 if cp.music_enabled == True:
                     musiquemenu()
                     game1.run()

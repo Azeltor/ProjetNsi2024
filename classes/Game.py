@@ -8,9 +8,10 @@ from classes.Joueur import NPC
 
 
 class Game:
-    def __init__(self, nom):
+    def __init__(self, nom, nomfenetre):
         cp.NomEcranJeu = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
         self.map = nom
+        pygame.display.set_caption(nomfenetre)
         pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
         tmx_data = pytmx.util_pygame.load_pygame('maps/world.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
@@ -108,6 +109,7 @@ class Game:
 
     def switch_world(self, indice):
         tmx_data = pytmx.util_pygame.load_pygame('maps/world.tmx')
+        pygame.display.set_caption('Numeric Project v1.0')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
@@ -134,7 +136,7 @@ class Game:
         enter_cimetierre = tmx_data.get_object_by_name('ForetS1')
         self.enter_cimetierre_rect = pygame.Rect(enter_cimetierre.x, enter_cimetierre.y, enter_cimetierre.width, enter_cimetierre.height)
 
-        dehors_spawn_point = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'), tmx_data.get_object_by_name('Foret1'), tmx_data.get_object_by_name('ForetS1bug'))
+        dehors_spawn_point = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'), tmx_data.get_object_by_name('Foret1'), tmx_data.get_object_by_name('ForetS1'))
         self.player.position[0] = dehors_spawn_point[indice].x 
         self.player.position[1] = dehors_spawn_point[indice].y + 30
         self.npc = [NPC("robin", 2), NPC("personnage_00", 2)]
@@ -144,6 +146,7 @@ class Game:
 
     def switch_foret(self, indice):
         tmx_data = pytmx.util_pygame.load_pygame('maps/foret.tmx')
+        pygame.display.set_caption('Numeric Project v1.0')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
@@ -167,6 +170,7 @@ class Game:
     
     def switch_cimetierre(self):
         tmx_data = pytmx.util_pygame.load_pygame('maps/ForetS.tmx')
+        pygame.display.set_caption('Numeric Project v1.0')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo

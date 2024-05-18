@@ -7,7 +7,7 @@ from Fonctions import jeu
 
 '''Création Fenêtre Pour menu'''
 pygame.init()
-jeu.fenetre('Menu', 'menu')
+jeu.fenetre('Menu', 'Numeric Project v1.0 : Menu')
 jeu.menu()
 
 '''Pour lancer le jeu'''
