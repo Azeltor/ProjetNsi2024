@@ -11,6 +11,7 @@ class Game:
     def __init__(self, nom):
         cp.NomEcranJeu = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
         self.map = nom
+        pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
         tmx_data = pytmx.util_pygame.load_pygame('maps/world.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
@@ -84,6 +85,7 @@ class Game:
         tmx_data = pytmx.util_pygame.load_pygame('maps/grotte.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
         map_layer.zoom = 2
         self.map = "grotte"
         self.walls = []
@@ -108,6 +110,7 @@ class Game:
         tmx_data = pytmx.util_pygame.load_pygame('maps/world.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
         map_layer.zoom = 2
         self.map = "world"
 
@@ -143,6 +146,7 @@ class Game:
         tmx_data = pytmx.util_pygame.load_pygame('maps/foret.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
         map_layer.zoom = 2
         self.map = "foret"
 
@@ -165,6 +169,7 @@ class Game:
         tmx_data = pytmx.util_pygame.load_pygame('maps/ForetS.tmx')
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
         map_layer.zoom = 2
         self.map = "cimetierre"
 

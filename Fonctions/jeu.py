@@ -14,7 +14,7 @@ info = pygame.display.Info()
 
 def fenetre(menuoujeu, nom_fenetre):
     pygame.display.set_caption(nom_fenetre) #Met le nom du jeu dans le fenêtre en haut à gauche
-    pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\Logo.png')) #Chargement du logo
+    pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
     if menuoujeu == 'Menu':
         cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE) #Chargement du menu selon les résolutions de l'ordinateur du joueur
     
