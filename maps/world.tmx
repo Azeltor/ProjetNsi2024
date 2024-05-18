@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="1419">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="1422">
  <tileset firstgid="1" source="tileset_nsi.tsx"/>
  <tileset firstgid="3801" source="tileset_nsi2.tsx"/>
  <layer id="1" name="Fond" width="100" height="100">
@@ -1159,9 +1159,10 @@
   <object id="1402" name="dehors2" type="warp" x="512" y="2176" width="64" height="32"/>
   <object id="1403" name="dehors1" type="warp" x="736" y="2400" width="64" height="32"/>
   <object id="1404" type="warp" x="2848" y="1952" width="32" height="32"/>
-  <object id="1405" type="warp" x="3168" y="1536" width="32" height="128"/>
-  <object id="1406" type="warp" x="2880" y="928" width="32" height="64"/>
+  <object id="1406" name="ForetS1" type="warp" x="3150" y="1553" width="32" height="122"/>
   <object id="1407" name="Foret1" x="2368" y="384" width="64" height="32"/>
+  <object id="1420" name="ForetS1bug" x="3075" y="1603" width="22" height="27"/>
+  <object id="1421" x="3406" y="1714" width="1"/>
  </objectgroup>
  <objectgroup id="18" name="pnj_test">
   <object id="1412" name="robin_path2" x="1664" y="2496" width="32" height="32"/>

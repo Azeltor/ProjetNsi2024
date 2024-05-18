@@ -33,6 +33,9 @@ class Game:
         enter_foret = tmx_data.get_object_by_name('Foret1')
         self.enter_foret_rect = pygame.Rect(enter_foret.x, enter_foret.y, enter_foret.width, enter_foret.height)
 
+        enter_cimetierre = tmx_data.get_object_by_name('ForetS1')
+        self.enter_cimetierre_rect = pygame.Rect(enter_cimetierre.x, enter_cimetierre.y, enter_cimetierre.width, enter_cimetierre.height)
+
     def handle_input(self):
         pressed = pygame.key.get_pressed()
         if pressed[pygame.K_z] and pressed[pygame.K_d] and pressed[pygame.K_q]:
@@ -98,6 +101,7 @@ class Game:
         dedans_spawn_point = (tmx_data.get_object_by_name('dedans1'), tmx_data.get_object_by_name('dedans2'))
         self.player.position[0] = dedans_spawn_point[indice].x
         self.player.position[1] = dedans_spawn_point[indice].y - 40
+        self.npc = []
         self.teleport_npcs(self.map)
 
     def switch_world(self, indice):
@@ -124,10 +128,16 @@ class Game:
         enter_foret = tmx_data.get_object_by_name('Foret1')
         self.enter_foret_rect = pygame.Rect(enter_foret.x, enter_foret.y, enter_foret.width, enter_foret.height)
 
-        dehors_spawn_point = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'), tmx_data.get_object_by_name('Foret1'))
-        self.player.position[0] = dehors_spawn_point[indice].x
-        self.player.position[1] = dehors_spawn_point[indice].y+30
+        enter_cimetierre = tmx_data.get_object_by_name('ForetS1')
+        self.enter_cimetierre_rect = pygame.Rect(enter_cimetierre.x, enter_cimetierre.y, enter_cimetierre.width, enter_cimetierre.height)
+
+        dehors_spawn_point = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'), tmx_data.get_object_by_name('Foret1'), tmx_data.get_object_by_name('ForetS1bug'))
+        self.player.position[0] = dehors_spawn_point[indice].x 
+        self.player.position[1] = dehors_spawn_point[indice].y + 30
+        self.npc = [NPC("robin", 2), NPC("personnage_00", 2)]
         self.teleport_npcs(self.map)
+        for pnj in self.npc:
+            self.group.add(pnj)
 
     def switch_foret(self, indice):
         tmx_data = pytmx.util_pygame.load_pygame('maps/foret.tmx')
@@ -150,11 +160,40 @@ class Game:
         dehors_spawn_point = (tmx_data.get_object_by_name('Foret2'), tmx_data.get_object_by_name('Cache2'), tmx_data.get_object_by_name('Cache1'))
         self.player.position[0] = dehors_spawn_point[indice].x
         self.player.position[1] = dehors_spawn_point[indice].y
+    
+    def switch_cimetierre(self):
+        tmx_data = pytmx.util_pygame.load_pygame('maps/ForetS.tmx')
+        map_data = pyscroll.data.TiledMapData(tmx_data)
+        map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
+        map_layer.zoom = 2
+        self.map = "cimetierre"
+
+        self.walls = []
+        for obj in tmx_data.objects:
+            if obj.type == "collision":
+                self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+
+        self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  1)
+        self.group.add(self.player)
+
+        enter_cimetierre = tmx_data.get_object_by_name('ForetS2')
+        self.enter_cimetierre_rect = pygame.Rect(enter_cimetierre.x, enter_cimetierre.y, enter_cimetierre.width, enter_cimetierre.height)
+
+        dehors_spawn_point = tmx_data.get_object_by_name('ForetS2')
+        self.player.position[0] = dehors_spawn_point.x 
+        self.player.position[1] = dehors_spawn_point.y
         
         
     def update(self):
         self.group.update()
         a = 0
+        if self.map == 'world' and self.player.feet.colliderect(self.enter_cimetierre_rect):
+            self.switch_cimetierre()
+            self.player.position[0] += 40
+        if self.map == 'cimetierre' and self.player.feet.colliderect(self.enter_cimetierre_rect):
+            self.switch_world(3)
+            self.player.position[0] -=40
+            
         if self.map == 'foret' and self.player.feet.colliderect(self.enter_foret_rect[0]):
             self.switch_world(2)
         if self.map == 'world' and self.player.feet.colliderect(self.enter_foret_rect):
