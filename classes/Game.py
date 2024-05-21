@@ -254,8 +254,14 @@ class Game:
             pygame.display.flip() #Actualiser l'affichage de la map
 
 
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: #Si le bouton "Quitter" a été cliqué, le jeu se ferme
                     pygame.quit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        self.boite_dialogue.next_text()
+
+            
             cp.timer.tick(cp.fps)
     pygame.quit() #Permet de quitter le jeu
