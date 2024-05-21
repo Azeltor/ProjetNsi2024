@@ -85,13 +85,16 @@ class Player(Entity):
         super().__init__("test", 49*32, 80*32)
         
 class NPC(Entity):
-    def __init__(self, name, nb_points):
+    def __init__(self, name, nb_points, dialogue):
         super().__init__(name, 50*32, 80*32)
         self.nb_points = nb_points
         self.name = name
         self.points = []
         self.current_point = 0
         self.speed = 0.3
+        self.dialogue = dialogue
+        
+
     def move(self):
         current_point = self.current_point
         next_point = self.current_point + 1

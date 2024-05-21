@@ -18,7 +18,7 @@ class Game:
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         map_layer.zoom = 2
-        self.npc = [NPC("robin", 2), NPC("personnage_00", 2)]
+        self.npc = [NPC("robin", 2, ["j'aime la bite", "me too sir", "emotion"]), NPC("personnage_00", 2, ["caca", "gazouz"])]
         self.player = Player()  #50 * 32, 80* 32
         self.teleport_npcs(self.map)
         self.walls = []
@@ -255,7 +255,7 @@ class Game:
                         for event in pygame.event.get():
                             if event.type == pygame.KEYDOWN:
                                 if event.key == pygame.K_SPACE:
-                                    boite_dialogue.execute()
+                                    boite_dialogue.execute(sprite.dialogue)
                     else:
                         sprite.speed = 0.3
             

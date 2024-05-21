@@ -1,4 +1,5 @@
 import pygame
+from classes.quete import *
 pygame.init()
 
 
@@ -12,17 +13,18 @@ class boite_dialogue:
     pygame.init()
     self.box = pygame.image.load('Graphisme\Objet\dialog_box.png')
     self.box = pygame.transform.scale(self.box, (700, 100))
-    self.texts = ["Salut ça va ?", "moi super bien", "bonne aventure"]
+    self.texts = []
     self.text_index = 0
     self.font = pygame.font.Font("Graphisme\Objet\dialog_font.ttf", 18)
     self.etat = False
 
-  def execute(self):
+  def execute(self, dialog = []):
     if self.etat:
       self.prochain_text()
     else:
       self.etat = True
       self.text_index = 0
+      self.texts = dialog
 
   def render(self, screen):
     if self.etat:
