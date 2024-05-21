@@ -1,6 +1,6 @@
 import pytmx, pygame, sys
 
-class boite_dialogue(self):
+class boite_dialogue:
 X_POSITION = 60
 Y_POSITION = 470
   
