@@ -1164,8 +1164,8 @@
   <object id="1427" name="Cimetierre1" x="2880" y="928" width="32" height="64"/>
  </objectgroup>
  <objectgroup id="18" name="pnj_test">
-  <object id="1412" name="robin_path2" x="1664" y="2496" width="32" height="32"/>
-  <object id="1413" name="robin_path1" x="1856" y="2496" width="32" height="32"/>
+  <object id="1412" name="robin_rouge_path2" x="1664" y="2496" width="32" height="32"/>
+  <object id="1413" name="robin_rouge_path1" x="1856" y="2496" width="32" height="32"/>
   <object id="1415" name="personnage_00_path1" x="1920" y="2560" width="32" height="32"/>
   <object id="1416" name="personnage_00_path2" x="1920" y="2688" width="32" height="32"/>
  </objectgroup>

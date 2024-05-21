@@ -1,5 +1,5 @@
 import pygame
-from classes.quete import *
+
 pygame.init()
 
 
@@ -31,6 +31,7 @@ class boite_dialogue:
       screen.blit(self.box,(self.X_POSITION,self.Y_POSITION))
       text = self.font.render(self.texts[self.text_index],False,(0, 0, 0))
       screen.blit(text,(self.X_POSITION + 60,self.Y_POSITION + 30))
+      
 
 
   def prochain_text(self):

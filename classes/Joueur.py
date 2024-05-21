@@ -1,19 +1,15 @@
 import pytmx, pygame, sys
+from classes.Animation import *
 
-class Entity(pygame.sprite.Sprite):
+class Entity(AnimateSprite):
     def __init__(self, name, x, y): #Définit les coordonnées d'apparition du joueur 
-        super().__init__()
-        self.sprite_sheet = pygame.image.load(f"Graphisme\Character\{name}.png") #Charge la spritesheet avec les personnages
+        super().__init__(name)
+        
         self.image = self.get_image(0, 0) #Personnage en Idle
         self.image.set_colorkey([255, 255, 255])
         self.rect = self.image.get_rect()
         self.position = [x, y] #Position du joueur
-        self.images = {
-            'down' : self.get_image(0,96),
-            'left' : self.get_image(0, 96),
-            'right': self.get_image(0, 32),
-            'up' : self.get_image(0,64)
-        } #Différentes images pour les actions différentes du joueur
+        
         self.feet = pygame.Rect(0, 0, self.rect.width * 0.5, 8) #Créer un rectangle aux pieds du joueur
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker (Initialisation)
         self.inventaire = []
@@ -25,22 +21,24 @@ class Entity(pygame.sprite.Sprite):
     def save_location(self):
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker
 
-    def change_anim(self, name): #Méthode qui s'occupe des animations du personnage
-        self.image = self.images[name] 
-        self.image.set_colorkey([255, 255, 255])
+    
 
     def move_right(self): #Fonction pour avancer à droite
+        self.change_anim('right')
         self.position[0] += 3* 0.8 #Valeur de déplacement vers la droite
-    
+        
     def move_left(self): #Fonction pour avancer à gauche
+        self.change_anim('left')
         self.position[0] -= 3* 0.8 #Valeur de déplacement vers la gauche
-    
+        
     def move_up(self): #Fonction pour avancer en haut
+        self.change_anim('up')
         self.position[1] -= 3* 0.8 #Valeur de déplacement vers le haut
-    
+        
     def move_down(self): #Fonction pour avancer en bas
+        self.change_anim('down')
         self.position[1] += 3* 0.8 #Valeur de déplacement vers le bas
-    
+        
     def move_upAndright(self): #Fonction pour avancer en haut à droite
         self.position[0] += 2.115* 0.8 #Valeur de déplacement vers la droite
         self.position[1] -= 2.115* 0.8 #Valeur de déplacement vers le haut
@@ -58,8 +56,8 @@ class Entity(pygame.sprite.Sprite):
         self.position[1] += 2.115* 0.8 #Valeur de déplacement vers la droite
 
     def bougepas(self): #Fonction permettant d'immobiliser le personnage
-        self.position[0] -= 0.0000000000000000000001
-        self.position[1] -= 0.0000000000000000000001
+        self.position[0] -= 0
+        self.position[1] -= 0
 
     
         
@@ -106,12 +104,16 @@ class NPC(Entity):
         next_rect = self.points[next_point]
         
         if current_rect.y < next_rect.y:
+            self.change_anim('up')
             self.position[1] += 3 * self.speed
         elif current_rect.y > next_rect.y:
+            self.change_anim('down')
             self.position[1] -= 3 * self.speed
         elif current_rect.x < next_rect.x:
+            self.change_anim('right')
             self.position[0] += 3 * self.speed
         elif current_rect.x > next_rect.x:
+            self.change_anim('left')
             self.position[0] -= 3 * self.speed
         
         

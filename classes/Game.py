@@ -18,7 +18,7 @@ class Game:
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         map_layer.zoom = 2
-        self.npc = [NPC("robin", 2, ["j'aime la bite", "me too sir", "emotion"]), NPC("personnage_00", 2, ["caca", "gazouz"])]
+        self.npc = [NPC("robin_rouge", 2, ["j'aime la bite", "me too sir", "emotion"]), NPC("personnage_00", 2, ["caca", "gazouz"])]
         self.player = Player()  #50 * 32, 80* 32
         self.teleport_npcs(self.map)
         self.walls = []
@@ -76,16 +76,16 @@ class Game:
 
         elif pressed[pygame.K_z]:
             self.player.move_up() #Lorsque le joueur appuie sur "Z", le personnage avance vers le haut
-            self.player.change_anim('up')
+            
         elif pressed[pygame.K_s]:
             self.player.move_down() #Lorsque le joueur appuis sur "S", le personnage avance vers le bas
-            self.player.change_anim('down')
+            
         elif pressed[pygame.K_d]:
             self.player.move_right() #Lorsque le joueur appuie sur "D", le personnage avance vers la droite
-            self.player.change_anim('right')
+            
         elif pressed[pygame.K_q]:
             self.player.move_left() #Lorsque le joueur appuie sur "Q", le personnage avabce vers la gauche
-            self.player.change_anim('left')
+            
 
     def teleport_npcs(self, map):
         for pnj in range(len(self.npc)):
