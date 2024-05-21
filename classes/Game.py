@@ -254,8 +254,11 @@ class Game:
                         sprite.speed = 0
                         if Entity.quete_actuelle == None:
                             for i in range(len(self.npc)):
-                                if self.npc[i].name == sprite.name: ## Attention pas sûr que ça soit sprite.name
+                                if self.npc[i].name == sprite: ## Attention pas sûr que ça soit sprite.name
                                     proposer_quete(self.player,self.npc[i])
+                        if Entity.verifier_completion(self.player):
+                           dialogue.boite_dialogue.texts = "la quête est accomplit Neuille ! "
+                            
                                 
                         for event in pygame.event.get():
                             if event.type == pygame.KEYDOWN:
