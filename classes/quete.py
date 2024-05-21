@@ -38,30 +38,17 @@ class Quete:
                 self.quete_actuelle= quete9 
             
    
-    
-    
-    
-    
-    
-    
-   
-    
-      
-
     def verifier_completion(self, joueur):
         for objet in self.objets_requis:
             if not joueur.possede_objet(objet):
-                print(f"{joueur.nom} n'a pas encore tous les objets nécessaires pour compléter la quête '{self.titre}'.")
                 return False
         self.completee = True
-        quete_accomplit.append(self.quete_actuelle
-        print(f"{joueur.nom} a complété la quête '{self.titre}'!")
+        quete_accomplit.append(self.quete_actuelle)
         self.inventaire.pop
         self.quete_actuelle.pop
         return True
 
-    def __str__(self):
-        return f"Quête: {self.titre}\nDescription: {self.description}\nObjets requis: {', '.join(self.objets_requis)}"
+ 
 
 # Création des quêtes : 
 quete1 = Quete("La quête du chevalier", "Trouver l'épée et le bouclier.", ["Épée", "Bouclier"])
