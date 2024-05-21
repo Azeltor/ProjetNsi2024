@@ -11,8 +11,7 @@ def __init__(self):
 def afficher(self, ecran):
   if self.visible:
     ecran.blit(self.boite, (50, 400))  # Position de la boîte de dialogue
-    text_surface = self.font.render(self.text, True, (0, 0, 0))
-    ecran.blit(text_surface, (70, 420))  # Position du texte à l'intérieur de la boîte
+    ecran.blit(text.font, (70, 420))  # Position du texte à l'intérieur de la boîte
 
   
   
