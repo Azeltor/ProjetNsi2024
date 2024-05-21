@@ -249,6 +249,7 @@ class Game:
             self.update() #Appel Update
             self.group.center(self.player.rect.center)
             self.group.draw(cp.NomEcranJeu)
+            self.boite_dialogue.render(self.ecran)
             pygame.display.flip() #Actualiser l'affichage de la map
 
 
