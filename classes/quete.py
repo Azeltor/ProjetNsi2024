@@ -83,6 +83,19 @@ quete7 = Quete("La quête de l'explorateur", "Trouver la sacoche et le parchemin
 quete8 = Quete("La quête du gardien", "Trouver la clef et le trophée.", ["Clef", "Trophée"])
 quete9 = Quete("La quête du cuisinier", "Trouver le pain et le fromage.", ["Pain", "Fromage"])
 
+# Création des perso : 
+npc1 = NPC("Godefroy", 5, quete1)
+npc2 = NPC("Guenièvre", 5, quete2)
+npc3 = NPC("Merlin", 5, quete3)
+npc4 = NPC("Morgane", 5, quete4)
+npc5 = NPC("Arthur", 5, quete5)
+npc6 = NPC("Élaine", 5, quete6)
+npc7 = NPC("Galahad", 5, quete7)
+npc8 = NPC("lancelot",5,quete8)
+npc9 = NPC("Tristan",5,quete9)
+
+
+
 # Dictionnaire des quêtes disponibles
 quetes_disponibles = {
     "quete1": quete1,
