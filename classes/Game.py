@@ -3,13 +3,14 @@ import pytmx
 import pyscroll
 from Fonctions.jeu import *
 from Constantes import constante_partie as cp
+from classes.Dialogue import *
 from classes.Joueur import Player
 from classes.Joueur import NPC
 
 
 class Game:
     def __init__(self, nom, nomfenetre):
-        cp.NomEcranJeu = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
+        self.screen = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE)
         self.map = nom
         pygame.display.set_caption(nomfenetre)
         pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
@@ -24,10 +25,12 @@ class Game:
         for obj in tmx_data.objects:
             if obj.type == "collision":
                 self.walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+        
         self.group = pyscroll.PyscrollGroup(map_layer = map_layer, default_layer =  10)
         self.group.add(self.player)
         for pnj in self.npc:
             self.group.add(pnj)
+        
         enter_grotte = (tmx_data.get_object_by_name('dehors1'), tmx_data.get_object_by_name('dehors2'))
         self.enter_grotte_rect = (pygame.Rect(enter_grotte[0].x, enter_grotte[0].y, enter_grotte[0].width, enter_grotte[0].height),pygame.Rect(enter_grotte[1].x, enter_grotte[1].y, enter_grotte[1].width, enter_grotte[1].height))
 
@@ -38,6 +41,12 @@ class Game:
         enter_cimetierre = tmx_data.get_object_by_name('Cimetierre1')
         self.enter_cimetierre_rect = pygame.Rect(enter_cimetierre.x, enter_cimetierre.y, enter_cimetierre.width, enter_cimetierre.height)
         self.boite_dialogue = boite_dialogue()
+        
+        
+                        
+                    
+
+                    
 
     def handle_input(self):
         pressed = pygame.key.get_pressed()
@@ -238,6 +247,18 @@ class Game:
             else:
                 self.npc[pnj].move()
 
+    def collisionnpc(self, boite_dialogue):
+        for sprite in self.group.sprites():
+            if type(sprite) is NPC:
+                    if sprite.feet.colliderect(self.player.rect):
+                        sprite.speed = 0
+                        for event in pygame.event.get():
+                            if event.type == pygame.KEYDOWN:
+                                if event.key == pygame.K_SPACE:
+                                    boite_dialogue.execute()
+                    else:
+                        sprite.speed = 0.3
+            
 
 
 
@@ -249,18 +270,17 @@ class Game:
             self.handle_input() #Détecte les mouvements du joueur
             self.update() #Appel Update
             self.group.center(self.player.rect.center)
-            self.group.draw(cp.NomEcranJeu)
-            self.boite_dialogue.afficher(self.ecran)
+            self.group.draw(self.screen)
+            self.boite_dialogue.render(self.screen)
+            self.collisionnpc(self.boite_dialogue)
             pygame.display.flip() #Actualiser l'affichage de la map
-
+             
 
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: #Si le bouton "Quitter" a été cliqué, le jeu se ferme
                     pygame.quit()
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        self.boite_dialogue.next_text()
+                
 
             
             cp.timer.tick(cp.fps)

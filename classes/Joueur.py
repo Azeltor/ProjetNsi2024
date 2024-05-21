@@ -18,7 +18,10 @@ class Entity(pygame.sprite.Sprite):
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker (Initialisation)
         self.inventaire = []
         self.quete_actuelle = None
-        
+
+    
+                    
+
     def save_location(self):
         self.old_position = self.position.copy() #Copie la position actuelle du joueur pour la stocker
 
@@ -55,9 +58,10 @@ class Entity(pygame.sprite.Sprite):
         self.position[1] += 2.115* 0.8 #Valeur de déplacement vers la droite
 
     def bougepas(self): #Fonction permettant d'immobiliser le personnage
-        self.position[0] -= 0
-        self.position[1] -= 0
+        self.position[0] -= 0.0000000000000000000001
+        self.position[1] -= 0.0000000000000000000001
 
+    
         
     def update(self): #Permet d'actualiser la position du joueur
         self.rect.topleft = self.position
@@ -78,7 +82,7 @@ class Entity(pygame.sprite.Sprite):
    
 class Player(Entity):
     def __init__(self):
-        super().__init__("test", 86*32, 30*32)
+        super().__init__("test", 49*32, 80*32)
         
 class NPC(Entity):
     def __init__(self, name, nb_points):
@@ -87,7 +91,7 @@ class NPC(Entity):
         self.name = name
         self.points = []
         self.current_point = 0
-        
+        self.speed = 0.3
     def move(self):
         current_point = self.current_point
         next_point = self.current_point + 1
@@ -99,17 +103,19 @@ class NPC(Entity):
         next_rect = self.points[next_point]
         
         if current_rect.y < next_rect.y:
-            self.move_down()
+            self.position[1] += 3 * self.speed
         elif current_rect.y > next_rect.y:
-            self.move_up()
+            self.position[1] -= 3 * self.speed
         elif current_rect.x < next_rect.x:
-            self.move_right()
+            self.position[0] += 3 * self.speed
         elif current_rect.x > next_rect.x:
-            self.move_left()
-            
+            self.position[0] -= 3 * self.speed
+        
+        
+
         if self.rect.colliderect(next_rect):
             self.current_point = next_point
-        
+       
     def teleport_spawn(self):
         location = self.points[self.current_point]
         self.position[0] = location.x
