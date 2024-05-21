@@ -37,6 +37,7 @@ class Game:
 
         enter_cimetierre = tmx_data.get_object_by_name('Cimetierre1')
         self.enter_cimetierre_rect = pygame.Rect(enter_cimetierre.x, enter_cimetierre.y, enter_cimetierre.width, enter_cimetierre.height)
+        self.boite_dialogue = boite_dialogue()
 
     def handle_input(self):
         pressed = pygame.key.get_pressed()
@@ -249,7 +250,7 @@ class Game:
             self.update() #Appel Update
             self.group.center(self.player.rect.center)
             self.group.draw(cp.NomEcranJeu)
-            self.boite_dialogue.render(self.ecran)
+            self.boite_dialogue.afficher(self.ecran)
             pygame.display.flip() #Actualiser l'affichage de la map
 
 
