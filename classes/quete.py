@@ -10,7 +10,7 @@ class Quete:
 
     def proposer_quete(self,joueur,Npc):
         if self.quete_actuelle == None:
-            if NPC.name == "Godefroy" and self.quete_accomplit :
+            if NPC.name == "Godefroy" :
                 self.quete_actuelle = quete1
                    
             if NPC.name == "Guenièvre":
