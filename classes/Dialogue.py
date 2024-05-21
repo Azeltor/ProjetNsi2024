@@ -18,7 +18,7 @@ class boite_dialogue:
     self.font = pygame.font.Font("Graphisme\Objet\dialog_font.ttf", 18)
     self.etat = False
 
-  def execute(self, dialog = []):
+  def execute(self, dialog = [f"{NPC.name} Je vous ai deja donner la quete '{self.titre}', tete de neuille.")] ) 
     if self.etat:
       self.prochain_text()
     else:
