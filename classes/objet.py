@@ -1,4 +1,4 @@
-class Object:
+class Objet:
     def __init__(self, nom):
         self.nom = nom
         
@@ -8,18 +8,18 @@ class Object:
         
     def possede_objet(self, nom_objet):
         for objet in self.inventaire:
-            if objet.nom == nom_objet:
+            if objec.nom == nom_objet:
                 return True
         return False
     
 
 
         
-Epee = Object("Epée")
-Bouclier = Object("Boucier")
-Chaussures = Object("Chaussure")
-bague = Object("bague")
-stylo = Object("stylo")
+Epee = Objet("Epée")
+Bouclier = Objet("Boucier")
+Chaussures = Objet("Chaussure")
+bague = Objet("bague")
+stylo = Objet("stylo")
 arc = Objet("Arc")
 fleches = Objet("Flèches")
 amulette = Objet("Amulette")
