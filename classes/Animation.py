@@ -1,7 +1,7 @@
 import pygame
 
 class AnimateSprite(pygame.sprite.Sprite):
-    
+
     def __init__(self, name):
        super().__init__()
        self.sprite_sheet = pygame.image.load(f"Graphisme\Character\{name}.png") #Charge la spritesheet avec les personnages
@@ -15,13 +15,7 @@ class AnimateSprite(pygame.sprite.Sprite):
         } #Différentes images pour les actions différentes du joueur
        self.speed = 2
     def change_anim(self, name): #Méthode qui s'occupe des animations du personnage
-        self.images = {
-            'down' : self.get_images(0),
-            'left' : self.get_images(32),
-            'right': self.get_images(64),
-            'up' : self.get_images(96)
-        } #Différentes images pour les actions différentes du joueur
-        self.image = self.images[name][self.animation_index] 
+        self.image = self.images[name][self.animation_index]
         self.image.set_colorkey([255, 255, 255])
         self.clock += self.speed * 8
 
@@ -41,9 +35,9 @@ class AnimateSprite(pygame.sprite.Sprite):
             x = i*32
             image = self.get_image(x, y)
             images.append(image)
-        
+        return images
 
-    def get_image(self, x, y): #Permet d'actualiser la map lorsque le joueur avance
+    def get_image(self, x, y):
         image = pygame.Surface([32, 32])
         image.blit(self.sprite_sheet, (0,0), (x, y, 32, 32))
         return image

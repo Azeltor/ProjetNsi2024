@@ -18,7 +18,7 @@ class Game:
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         map_layer.zoom = 2
-        self.npc = [NPC("robin", 2, []), NPC("personnage_00", 2, [])]
+        self.npc = [NPC("robin_rouge", 2, []), NPC("personnage_00", 2, [])]
         self.player = Player()  #50 * 32, 80* 32
         self.teleport_npcs(self.map)
         self.walls = []
