@@ -17,10 +17,10 @@ def fenetre(menuoujeu, nom_fenetre):
     pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
     if menuoujeu == 'Menu':
         cp.NomEcran = pygame.display.set_mode((cp.screen_width - 10, cp.screen_height - 50),pygame.RESIZABLE) #Chargement du menu selon les résolutions de l'ordinateur du joueur
-    
+
 
 def musiquemenu():
-    pygame.mixer.init() 
+    pygame.mixer.init()
     pygame.mixer.music.load(cp.SonMenu) #Lancement de la musique du jeu
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.04) #Initialisation du volume de la musique par défaut
@@ -35,6 +35,7 @@ def menu():
     PlayO = Button(cp.screen_width / 2, cp.screen_height / 2-325, pygame.image.load('Graphisme\Boutons\Bouton_Jouer_Orange-removebg-preview.png'), 1) #Bouton Jouer Orange
     MusiqueOn = Button(cp.screen_width - cp.screen_width + 210, cp.screen_height /100 , pygame.image.load('Graphisme\Boutons\Anote_Musique_On.png'), 0.15) #Bouton Musique On
     MusiqueOff = Button(cp.screen_width - cp.screen_width + 350, cp.screen_height / 100, pygame.image.load('Graphisme\Boutons\Anote_Musique_Off.png'), 0.15) #Bouton Musique Off
+
     Quitter = (QuitterN,QuitterO)
     Jouer = (PlayN,PlayO)
     Option = (OptionN,OptionO)
@@ -44,7 +45,7 @@ def menu():
         # Arrière Plan
         cp.timer.tick(cp.fps)
         pygame.display.set_icon(pygame.image.load('Graphisme\Logo Menu\LogoMieux.png')) #Chargement du logo
-        cp.NomEcran.blit(pygame.image.load('Graphisme\Background\Bg.jpg'), (0, 0)) #Chargement de l'arrière plan
+        cp.NomEcran.blit(pygame.image.load('Graphisme\Background\Bg1.jpg'), (0, 0)) #Chargement de l'arrière plan
         # Dessiner les boutons
         Jouer[0].draw(cp.NomEcran)
         Icone.draw(cp.NomEcran)
@@ -73,7 +74,7 @@ def menu():
                     game1.run()
                 else:
                     game1.run()
-                
+
             if Jouer[0].est_dans() == False and Jouer[1].est_dans() == False: #Si on est ni dans le bouton Noir ni dans le bouton Orange
                 Jouer[0].rect.topleft = (Jouer[0].coordonnee[0] - Jouer[0].width/2,Jouer[0].coordonnee[1]) #Remet le bouton Noir à ses coordonnées d'origine
                 Jouer[1].rect.topleft = (-800 ,Jouer[0].coordonnee[1]) #Met le bouton Orange en dehors de la résolution
@@ -116,4 +117,4 @@ def menu():
 
 
 
-    
+
