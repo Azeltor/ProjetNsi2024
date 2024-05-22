@@ -257,16 +257,18 @@ class Game:
                                 if event.key == pygame.K_SPACE:
                                     if self.player.quete_actuelle == None:
                                         for i in range(len(self.npc)):
-                                            if self.npc[i].name == sprite.name: ## Attention pas sûr que ça soit sprite.name
+                                            if self.npc[i].name == sprite.name:
+                                                boite_dialogue.texts = ["Bonjour Neuille", "Voulez vous accepter la quête ?"+str(self.npc[i].dialogue.titre)]
                                                 boite_dialogue.execute()
                                                 Quete.proposer_quete(self.player,self.npc[i])
-                                    if self.npc[i].name == sprite: ## Attention pas sûr que ça soit sprite.name
-                                        if Quete.verifier_completion(self.player, self.npc.dialogue) == False:
-                                            boite_dialogue.texts = "Tu n'a pas les objet requis"
-                                            boite_dialogue.execute()
-                                        else:
-                                            boite_dialogue.texts = "Bien joué tete de neuille va voir les autres, je n'ai pas d'autre quete"
-                                            boite_dialogue.execute()
+                                    for k in range(len(self.npc)):
+                                        if self.npc[k].name == sprite:
+                                            if Quete.verifier_completion(self.player, self.npc.dialogue) == False:
+                                                boite_dialogue.texts = "Tu n'a pas les objet requis"
+                                                boite_dialogue.execute()
+                                            else:
+                                                boite_dialogue.texts = "Bien joué tete de neuille va voir les autres, je n'ai pas d'autre quete"
+                                                boite_dialogue.execute()
                                             
                     else:
                         sprite.speed = 0.3
