@@ -154,7 +154,7 @@ class Game:
         
 
 
-        self.npc = [NPC("robin", 2), NPC("personnage_00", 2)]
+        self.npc = [NPC("robin", 2,  Quete("La quête du chevalier", "Trouver l'épée et le bouclier.", ["Épée", "Bouclier"]))]
         self.teleport_npcs(self.map)
         for pnj in self.npc:
             self.group.add(pnj)
@@ -252,20 +252,30 @@ class Game:
             if type(sprite) is NPC:
                     if sprite.feet.colliderect(self.player.rect):
                         sprite.speed = 0
+                        
                         for event in pygame.event.get():
                             if event.type == pygame.KEYDOWN:
                                 if event.key == pygame.K_SPACE:
+                                    
+                                    boite_dialogue.texts = ["Bonjour Neuille"]
+                                    boite_dialogue.execute()
                                     if self.player.quete_actuelle == None:
                                         for i in range(len(self.npc)):
+                                            
                                             if self.npc[i].name == sprite.name:
-                                                boite_dialogue.texts = ["Bonjour Neuille", "Voulez vous accepter la quête ?"+str(self.npc[i].dialogue.titre)]
+                                                boite_dialogue.texts.append("Voulez vous accepter la quête" +str(self.npc[i].dialogue.titre) + "?")
                                                 boite_dialogue.execute()
-                                                Quete.proposer_quete(self.player,self.npc[i])
+                                                
+                                                if event.type == pygame.KEYDOWN:
+                                                    if event.key == pygame.K_e:
+                                                        Quete.proposer_quete(self.player,self.npc[i])
+                                                
                                     for k in range(len(self.npc)):
                                         if self.npc[k].name == sprite:
                                             if Quete.verifier_completion(self.player, self.npc.dialogue) == False:
-                                                boite_dialogue.texts = "Tu n'a pas les objet requis"
+                                                boite_dialogue.texts = ["Tu n'a pas les objet requis"]
                                                 boite_dialogue.execute()
+                                                
                                             else:
                                                 boite_dialogue.texts = "Bien joué tete de neuille va voir les autres, je n'ai pas d'autre quete"
                                                 boite_dialogue.execute()

@@ -18,13 +18,12 @@ class boite_dialogue:
     self.font = pygame.font.Font("Graphisme\Objet\dialog_font.ttf", 18)
     self.etat = False
 
-  def execute(self, dialog = [f"Je vous ai deja donner la quete, tete de neuille."]):
+  def execute(self):
     if self.etat:
       self.prochain_text()
     else:
       self.etat = True
       self.text_index = 0
-      self.texts = dialog
 
   def render(self, screen):
     if self.etat:
