@@ -1,3 +1,6 @@
+import pygame
+from classes.Joueur import *
+
 class Quete:
     def __init__(self, titre, description, objets_requis):
         self.titre = titre
@@ -8,11 +11,11 @@ class Quete:
 
 
 
-    def proposer_quete(self,joueur,Npc):
+    def proposer_quete(self,Npc):
         if self.quete_actuelle == None:
-            if NPC.name == "Godefroy" :
+            if Npc.name == "robin_rouge" :
                 self.quete_actuelle = quete1
-                   
+            '''       
             if NPC.name == "Guenièvre":
                 self.quete_actuelle= quete2
                        
@@ -36,11 +39,11 @@ class Quete:
                 
             if NPC.name == "Tristan":
                 self.quete_actuelle= quete9 
-            
+   '''
    
-    def verifier_completion(self, joueur):
-        for objet in self.objets_requis:
-            if not joueur.possede_objet(objet):
+    def verifier_completion(self, quete):
+        for objet in quete.objets_requis:
+            if not objet in self.inventaire:
                 return False
         self.completee = True
         quete_accomplit.append(self.quete_actuelle)
@@ -62,7 +65,8 @@ quete8 = Quete("La quête du gardien", "Trouver la clef et le trophée.", ["Clef
 quete9 = Quete("La quête du cuisinier", "Trouver le pain et le fromage.", ["Pain", "Fromage"])
 
 # Création des perso : 
-npc1 = NPC("Godefroy", 5, quete1)
+
+'''
 npc2 = NPC("Guenièvre", 5, quete2)
 npc3 = NPC("Merlin", 5, quete3)
 npc4 = NPC("Morgane", 5, quete4)
@@ -71,6 +75,7 @@ npc6 = NPC("Élaine", 5, quete6)
 npc7 = NPC("Galahad", 5, quete7)
 npc8 = NPC("lancelot",5,quete8)
 npc9 = NPC("Tristan",5,quete9)
+'''
 
 
 
@@ -88,8 +93,5 @@ quetes_disponibles = {
 
 
 
-512 205028
-# A ajouter dans la classe joueur : self.
 
-# Faire 
- L'objet qu'on cherche sera toujours un coffre
+# A ajouter dans la classe joueur : self.
