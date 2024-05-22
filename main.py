@@ -11,7 +11,7 @@ jeu.fenetre('Menu', 'Numeric Project v1.0 : Menu')
 jeu.menu()
 
 '''Pour lancer le jeu'''
-#Faire pip install pygame/pytmx/pyscroll , puis relance pyzo
+#Faire pip install pygame/pytmx/pyscroll , puis relance pyzod
 # executer os.chdir('Emplacement du fichier')
 
 '''Pour relancer le jeu'''

@@ -1,5 +1,6 @@
 import pygame
 from classes.Joueur import *
+from Constantes.constante_partie import * 
 pygame.init()
 
 
@@ -17,6 +18,16 @@ class boite_dialogue:
     self.text_index = 0
     self.font = pygame.font.Font("Graphisme\Objet\dialog_font.ttf", 18)
     self.etat = False
+
+  def info(self, screen, info):
+    self.font = pygame.font.Font("Graphisme\Objet\dialog_font.ttf", 36)
+    lines = info
+    lines = lines.splitlines()
+    i = 0
+    for line in lines:
+      text = self.font.render(line ,False,(255, 255, 255))
+      screen.blit(text,(screen_width//2 - 200 - 135* i,screen_height-200 + 40*i))
+      i += 1
 
   def execute(self):
     if self.etat:

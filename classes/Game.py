@@ -252,7 +252,7 @@ class Game:
             if type(sprite) is NPC:
                     if sprite.feet.colliderect(self.player.rect):
                         sprite.speed = 0
-                        
+                        boite_dialogue.info(self.screen, 'Appuyez Sur Espace\n Puis E pour obtenir une quete')
                         for event in pygame.event.get():
                             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                                     
