@@ -254,34 +254,37 @@ class Game:
                         sprite.speed = 0
                         
                         for event in pygame.event.get():
-                            if event.type == pygame.KEYDOWN:
-                                if event.key == pygame.K_SPACE:
+                            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                                     
-                                    boite_dialogue.texts = ["Bonjour Neuille"]
                                     boite_dialogue.execute()
-                                    if self.player.quete_actuelle == None:
+                                    if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.player.quete_actuelle == None:
                                         for i in range(len(self.npc)):
                                             
                                             if self.npc[i].name == sprite.name:
-                                                boite_dialogue.texts.append("Voulez vous accepter la quête" +str(self.npc[i].dialogue.titre) + "?")
-                                                boite_dialogue.execute()
-                                                
-                                                if event.type == pygame.KEYDOWN:
-                                                    if event.key == pygame.K_e:
-                                                        Quete.proposer_quete(self.player,self.npc[i])
-                                                
+                                                boite_dialogue.texts = ["Bonjour Neuille", "Voulez vous accepter " +str(self.npc[i].dialogue.titre) + "?"]
+                                                        
                                     for k in range(len(self.npc)):
                                         if self.npc[k].name == sprite:
                                             if Quete.verifier_completion(self.player, self.npc.dialogue) == False:
                                                 boite_dialogue.texts = ["Tu n'a pas les objet requis"]
                                                 boite_dialogue.execute()
-                                                
                                             else:
-                                                boite_dialogue.texts = "Bien joué tete de neuille va voir les autres, je n'ai pas d'autre quete"
+                                                boite_dialogue.texts = ["Bien joué tete de neuille va voir les autres, je n'ai pas d'autre quete"]
                                                 boite_dialogue.execute()
+                                                
+                            elif event.type == pygame.KEYDOWN and event.key == pygame.K_e and self.player.quete_actuelle == None:
+                                if "Voulez vous accepter" in boite_dialogue.texts[boite_dialogue.text_index]:
+                                    boite_dialogue.texts = ["Bonjour Neuille", "Tu as déjà une quête.Va voir ailleurs si j'y suis"]
+                                    for i in range(len(self.npc)):
+                                        if self.npc[i].name == sprite.name:
+                                            Quete.proposer_quete(self.player,self.npc[i])
                                             
                     else:
                         sprite.speed = 0.3
+                        for i in range(len(self.npc)):
+                            if self.npc[i].name == sprite.name:
+                                boite_dialogue.etat = False
+            
             
 
 

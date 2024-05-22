@@ -13,7 +13,7 @@ class boite_dialogue:
     pygame.init()
     self.box = pygame.image.load('Graphisme\Objet\dialog_box.png')
     self.box = pygame.transform.scale(self.box, (700, 100))
-    self.texts = []
+    self.texts = ["Bonjour Neuille"]
     self.text_index = 0
     self.font = pygame.font.Font("Graphisme\Objet\dialog_font.ttf", 18)
     self.etat = False
