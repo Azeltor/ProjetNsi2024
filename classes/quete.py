@@ -46,7 +46,7 @@ class Quete:
             if not objet in self.inventaire:
                 return False
         self.completee = True
-        quete_accomplit.append(self.quete_actuelle)
+        self.quete_accomplit.append(self.quete_actuelle)
         self.inventaire.pop
         self.quete_actuelle.pop
         return True

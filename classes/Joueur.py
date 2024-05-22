@@ -91,36 +91,38 @@ class NPC(Entity):
         self.current_point = 0
         self.speed = 0.3
         self.dialogue = dialogue
-        
+        self.direction = 1  # 1 for forward, -1 for backward
 
     def move(self):
         current_point = self.current_point
-        next_point = self.current_point + 1
+        next_point = self.current_point + self.direction
         
-        if next_point >= self.nb_points:
-            next_point = 0
-        
+        if next_point >= self.nb_points or next_point < 0:
+            self.direction *= -1  # Invert direction
+            next_point = self.current_point + self.direction
+
         current_rect = self.points[current_point]
         next_rect = self.points[next_point]
-        
-        if current_rect.y < next_rect.y:
-            self.change_anim('up')
-            self.position[1] += 3 * self.speed
-        elif current_rect.y > next_rect.y:
+
+        tolerance = 3  # Tolerance for reaching the point
+        if abs(self.position[1] - next_rect.y) <= tolerance and abs(self.position[0] - next_rect.x) <= tolerance:
+            self.current_point = next_point
+            self.position[0] = next_rect.x
+            self.position[1] = next_rect.y
+
+        if self.position[1] < next_rect.y:
             self.change_anim('down')
+            self.position[1] += 3 * self.speed
+        elif self.position[1] > next_rect.y:
+            self.change_anim('up')
             self.position[1] -= 3 * self.speed
-        elif current_rect.x < next_rect.x:
+        elif self.position[0] < next_rect.x:
             self.change_anim('right')
             self.position[0] += 3 * self.speed
-        elif current_rect.x > next_rect.x:
+        elif self.position[0] > next_rect.x:
             self.change_anim('left')
             self.position[0] -= 3 * self.speed
-        
-        
 
-        if self.rect.colliderect(next_rect):
-            self.current_point = next_point
-       
     def teleport_spawn(self):
         location = self.points[self.current_point]
         self.position[0] = location.x
@@ -129,6 +131,6 @@ class NPC(Entity):
         
     def load_points(self, map):
         for k in range(1, self.nb_points + 1):
-            point = (pytmx.util_pygame.load_pygame('maps/'+str(map)+'.tmx').get_object_by_name(str(self.name)+'_path'+str(k)))
+            point = pytmx.util_pygame.load_pygame('maps/' + str(map) + '.tmx').get_object_by_name(str(self.name) + '_path' + str(k))
             rect = pygame.Rect(point.x, point.y, point.width, point.height)
             self.points.append(rect)
