@@ -1172,7 +1172,7 @@
   <object id="1442" name="robin_jaune_path1" x="1632" y="1184" width="32" height="32"/>
   <object id="1443" name="robin_jaune_path2" x="1280" y="1184" width="32" height="32"/>
   <object id="1445" name="robin_jaune_path3" x="1280" y="832" width="32" height="32"/>
-  <object id="1449" name="robin_violet_path2" x="487" y="1039" width="32" height="32"/>
-  <object id="1450" name="robin_violet_path3" x="498" y="895.667" width="32" height="32"/>
+  <object id="1449" name="robin_violet_path2" x="672" y="1024" width="32" height="32"/>
+  <object id="1450" name="robin_violet_path3" x="512" y="1024" width="32" height="32"/>
  </objectgroup>
 </map>
