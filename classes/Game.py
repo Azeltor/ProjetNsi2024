@@ -18,7 +18,7 @@ class Game:
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, (cp.screen_width, cp.screen_height))
         map_layer.zoom = 2
-        self.npc = [NPC("robin_rouge", 1, Quete("La quête du chevalier", "Trouver l'épée et le bouclier.", ["Épée", "Bouclier"])), NPC("robin_vert", 11, []), NPC("robin_violet", 3, []), NPC("robin_jaune", 3, [])]
+        self.npc = [NPC("robin_rouge", 1, Quete("La quête du chevalier", "Trouver l'épée et le bouclier.", ["Épée", "Bouclier"])), NPC("robin_vert", 11, Quete("La quête de l'archer", "Trouver l'arc et les flèches.", ["Arc", "Flèches"])), NPC("robin_violet", 3, Quete("La quête du mage", "Trouver le grimoire et l'amulette.", ["Grimoire", "Amulette"])), NPC("robin_jaune", 3, Quete("La quête du guérisseur", "Trouver les herbes médicinales et la potion de soin.", ["Herbes médicinales", "Potion de soin"]))]
         self.player = Player()  #50 * 32, 80* 32
         self.teleport_npcs(self.map)
         self.walls = []
@@ -154,7 +154,7 @@ class Game:
         
 
 
-        self.npc = [NPC("robin_rouge", 1, Quete("La quête du chevalier", "Trouver l'épée et le bouclier.", ["Épée", "Bouclier"])), NPC("robin_vert", 11, []), NPC("robin_violet", 3, []), NPC("robin_jaune", 3, [])]
+        self.npc = [NPC("robin_rouge", 1, Quete("La quête du chevalier", "Trouver l'épée et le bouclier.", ["Épée", "Bouclier"])), NPC("robin_vert", 11, Quete("La quête de l'archer", "Trouver l'arc et les flèches.", ["Arc", "Flèches"])), NPC("robin_violet", 3, Quete("La quête du mage", "Trouver le grimoire et l'amulette.", ["Grimoire", "Amulette"])), NPC("robin_jaune", 3, Quete("La quête du guérisseur", "Trouver les herbes médicinales et la potion de soin.", ["Herbes médicinales", "Potion de soin"]))]
         self.teleport_npcs(self.map)
         for pnj in self.npc:
             self.group.add(pnj)

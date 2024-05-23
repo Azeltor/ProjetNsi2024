@@ -1,6 +1,6 @@
 import pygame
 from classes.Joueur import *
-from Constantes.constante_partie import * 
+from Constantes.constante_partie import *
 pygame.init()
 
 
