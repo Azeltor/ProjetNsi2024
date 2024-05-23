@@ -89,11 +89,9 @@ class NPC(Entity):
         self.name = name
         self.points = []
         self.current_point = 0
-        self.speed = 0.25
+        self.speed = 0.3
         self.dialogue = dialogue
         self.direction = 1  # 1 for forward, -1 for backward
-        if self.nb_points == 1:
-            self.change_anim('none')
 
     def move(self):
         current_point = self.current_point
@@ -111,7 +109,7 @@ class NPC(Entity):
             self.current_point = next_point
             self.position[0] = next_rect.x
             self.position[1] = next_rect.y
-        
+
         if self.position[1] < next_rect.y:
             self.change_anim('down')
             self.position[1] += 3 * self.speed

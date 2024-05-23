@@ -15,22 +15,16 @@ class AnimateSprite(pygame.sprite.Sprite):
         } #Différentes images pour les actions différentes du joueur
        self.speed = 2
     def change_anim(self, name): #Méthode qui s'occupe des animations du personnage
-        if name == 'none':
-            image = self.get_image(32, 0)
-            image.blit(self.sprite_sheet, (0,0), (32, 0, 32, 32))
-            self.image = image
-            self.image.set_colorkey([255, 255, 255])
-        else:
-            self.image = self.images[name][self.animation_index]
-            self.image.set_colorkey([255, 255, 255])
-            self.clock += self.speed * 8
+        self.image = self.images[name][self.animation_index]
+        self.image.set_colorkey([255, 255, 255])
+        self.clock += self.speed * 8
 
-            if self.clock >= 100:
+        if self.clock >= 100:
 
-                self.animation_index += 1
-                if self.animation_index >= len(self.images[name]):
-                    self.animation_index = 0
-                self.clock = 0
+            self.animation_index += 1
+            if self.animation_index >= len(self.images[name]):
+                self.animation_index = 0
+            self.clock = 0
 
 
 
