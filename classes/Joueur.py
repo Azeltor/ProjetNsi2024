@@ -80,7 +80,7 @@ class Entity(AnimateSprite):
    
 class Player(Entity):
     def __init__(self):
-        super().__init__("test", 49*32, 80*32)
+        super().__init__("robin_rouge", 49*32, 80*32)
         
 class NPC(Entity):
     def __init__(self, name, nb_points, dialogue):
