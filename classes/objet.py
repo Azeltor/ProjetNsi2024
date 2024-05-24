@@ -1,17 +1,16 @@
-class Objet:
-    def __init__(self, nom):
+
+class Objet(pygame.sprite.Sprite):
+    def __init__(self, nom, x, y):
         self.nom = nom
-        
-    def ramasser_objet(self, objet):
+        self.image = image
+        self.rect = self.image.get_rect(topleft=(x, y))
+
+    def ramasser(self):
         if pressed[pygame.K_e]:
-            self.inventaire.append(objet)
-        
-    def possede_objet(self, nom_objet):
-        for objet in self.inventaire:
-            if objec.nom == nom_objet:
-                return True
-        return False
-    
+            player.inventaire.append(objet)
+            self.kill()  
+
+
 
 
         
