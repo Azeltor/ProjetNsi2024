@@ -1,6 +1,6 @@
 '''Fichier Pour La Conception Du Menu'''
 import pygame, os
-os.chdir("P:/Documents/NSI TG/ProjetNsi2024")
+os.chdir("D:/ProjetNsi2024")
 from Fonctions import jeu
 
 

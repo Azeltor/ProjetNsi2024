@@ -13,8 +13,8 @@ class Quete:
 
     def proposer_quete(self,Npc):
         if self.quete_actuelle == None:
-            if Npc.name == "robin_rouge" :
-                self.quete_actuelle = quete1
+            if Npc.name == "robin_vert" :
+                self.quete_actuelle = quete2
             '''       
             if NPC.name == "Guenièvre":
                 self.quete_actuelle= quete2
